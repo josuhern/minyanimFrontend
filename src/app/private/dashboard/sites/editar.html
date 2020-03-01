@@ -1,0 +1,36 @@
+<div id="main" ng-controller="SitesController as siteCtrl" ng-init="siteCtrl.getSite()">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="page-header">
+                <center><h1><i class="fas fa-synagogue"></i> Edit {{siteCtrl.editSite.name}}</h1></center>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <form class="form-style" name="siteForm" ng-submit="siteForm.$valid && siteCtrl.updateSite(siteForm)" novalidate>
+                <div ng-repeat="alert in alerts" type="alert.type" class="alert alert-{{alert.type}}"><strong>{{ alert.msg }}</strong></div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <input type="text" ng-model="siteCtrl.editSite.name" id="name" name="name" placeholder="Name" class="form-control" data-error="Please, write a name" required>
+                                <span ng-show="siteForm.name.$dirty && siteForm.name.$touched && !siteForm.name.$valid && !siteForm.name.$pristine">Please, write a name.</span>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <input type="text" ng-model="siteCtrl.editSite.address" placeholder="Address" class="form-control" id="address" name="address" data-error="Please, write an address" required>
+                                <span ng-show="siteForm.address.$dirty && siteForm.address.$touched && !siteForm.address.$valid && !siteForm.address.$pristine">Please, write an address.</span>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <input type="text" ng-model="siteCtrl.editSite.phone" placeholder="Phone" class="form-control" id="phone" name="phone" data-error="Please, write a phone number" required>
+                                <span ng-show="siteForm.phone.$dirty && siteForm.phone.$touched && !siteForm.phone.$valid && !siteForm.phone.$pristine">Please, write a phone number.</span>
+                            </div>
+                        </div>
+                        <center><button ng-show="siteForm.$valid || siteCtrl.loading"  class="btn btn-oscuro" ng-disabled="siteCtrl.loading"><i ng-show="siteCtrl.loading" class="fa fa-circle-o-notch fa-spin"></i> Save</button></center>
+                    </form>
+        </div>
+        <div class="col-md-12">
+            <a ui-sref="dashboard.sucursalLista" class="btn btn-danger"><i class="fa fa-arrow-left"></i> Back</a>
+        </div>
+    </div>
+</div>

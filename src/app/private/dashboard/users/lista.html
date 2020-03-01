@@ -1,0 +1,35 @@
+<div id="main" ng-controller="UsersController as userCtrl" ng-init="userCtrl.queryUsers()">
+		<div class="row">
+			<div class="col-md-12">
+                <div class="page-header">
+                    <center><h1><i class="fa fa-users"></i> Users</h1></center>
+                </div>
+            </div>
+            <div class="col-md-2">
+             <button type="button" ng-if="sidebar.permisos.delete && sidebar.downloadEnable" class="btn btn-default" ng-csv="userCtrl.users" filename="Usuarios.csv" charset="utf-8"><span class="glyphicon glyphicon-download-alt">&nbsp;</span>Download CSV</button>
+           </div>
+            <div class="col-md-2 col-md-offset-8">
+                <a ng-if="sidebar.permisos.write" ui-sref="dashboard.usuariosAlta" class="btn btn-oscuro btn-block">New User</a>
+            </div>
+            <div class="col-md-12">
+                <div class="table-responsive">
+                <div ng-repeat="alert in alerts" type="alert.type" class="alert alert-{{alert.type}}"><strong>{{ alert.msg }}</strong></div>
+                  <table class="table" ng-table="userCtrl.tableParams" show-filter="true">
+                      <tbody>
+                          <tr ng-repeat="x in $data">
+                              <td data-title="'Name'" filter="{name: 'text'}" data-sortable="'name'">{{x.name}}</td>
+                              <td data-title="'Lastname'" filter="{lastname: 'text'}" data-sortable="'lastname'">{{x.lastname}}</td>
+                              <td data-title="'Email'" filter="{email: 'text'}" data-sortable="'email'">{{x.email}}</td>
+                              <td data-title="'Type'" filter="{user_type_name: 'text'}" data-sortable="'user_type_name'">{{x.user_type_name}}</td>
+                              <td data-title="'Synagogue'" filter="{synagogue_name: 'text'}" data-sortable="'synagogue_name'">{{x.synagogue_name}}</td>
+                              <td data-title="'Active'" filter="{active: 'text'}" data-sortable="'active'">{{x.active}}</td>
+                              <td ng-if="sidebar.permisos.delete && sidebar.deleteEnable"><button class="btn btn-danger btn-block" ng-click="userCtrl.deleteUser(x)">Delete</button></td>
+                              <td ng-if="sidebar.permisos.edit"><a class="btn btn-warning btn-block" ui-sref="dashboard.usuariosEditar({id: x.id})">Edit</a></td>
+                              <td ng-if="sidebar.permisos.read"><a class="btn btn-success btn-block" ui-sref="dashboard.usuariosVista({id: x.id})">More</a></td>
+                          </tr>
+                      </tbody>
+                  </table>
+                </div>
+            </div>
+	    </div>
+    </div>

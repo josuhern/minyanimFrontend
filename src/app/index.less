@@ -1,0 +1,270 @@
+/**
+ *  Do not remove the comments below. It's the markers used by wiredep to inject
+ *  less dependencies when defined in the bower.json of your dependencies
+ */
+// bower:less
+// endbower
+
+/**
+ *  If you want to override some bootstrap variables, you have to change values here.
+ *  The list of variables are listed here bower_components/bootstrap/less/variables.less
+ */
+@navbar-inverse-link-color: #5AADBB;
+@oscuro: #215c5f;
+@claro: #3f7073;
+@negro: #000;
+@white: #fff;
+@gris: #efefef;
+@transparent : rgba(255,255,255,0.3);
+@grisoscuro: #e7e7e7;
+@blanco: #fff;
+@icon-font-path: '../../bootstrap/fonts/';
+
+@smartphones: ~"only screen and (max-width: 479px)";
+@tablets: ~"only screen and (min-width: 768px) and (max-width: 959px)";
+
+body{
+  /*  position: relative;
+    padding-bottom: 13rem;
+	height: 100%;
+    min-height: 100%;
+  background-image: url("https://stmed.net/sites/default/files/blue-white-wallpapers-25171-712462.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;*/
+}
+
+footer {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  background-color: @gris;
+  text-align: center;
+}
+.browsehappy {
+  margin: 0.2em 0;
+  background: #ccc;
+  color: #000;
+  padding: 0.2em 0;
+}
+
+a {
+    color: @negro;
+    text-decoration: none;
+}
+
+.logo {
+    width: 50%;
+}
+
+/*****TABLES****/
+.table-responsive{
+    height: 500px;
+}
+
+/*FORMULARIOS*/
+.form-group {
+    margin-bottom: 15px;
+    span{
+        position: inherit;
+        color: @oscuro;
+    }
+}
+input[type="file"]:focus, input[type="radio"]:focus, input[type="checkbox"]:focus{
+    border-color: @oscuro;
+    outline: 0;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px @oscuro;
+}
+.input-group{
+    margin-bottom: 15px;
+}
+.form-control:focus {
+    border-color: @oscuro;
+    outline: 0;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px @oscuro;
+}
+.jumbotron{
+    background-color: @blanco !important;
+    padding-top: 120px !important;
+}
+.form-group{
+    .ng-invalid.ng-dirty {
+        border-color: #FA787E !important;
+        outline: 0;
+        box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px #FA787E;
+    }
+    .ng-valid.ng-dirty {
+        border-color: #33CC00 !important;
+        outline: 0;
+        box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px #33CC00;
+    }
+}
+.form-group.required .control-label:after {
+    color: #d00;
+    content: "*";
+    position: absolute;
+    margin-left: 5px;
+}
+.ta-root.focussed > .ta-scroll-window.form-control, .ta-scroll-window > .ta-bind:focus{
+    border-color: @oscuro !important;
+    outline: 0;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px @oscuro !important;
+    -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px @oscuro !important;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px @oscuro !important;
+}
+.list-group-item:focus{
+    border-color: @oscuro;
+    outline: 0;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px @oscuro;
+}
+/*FORMULARIOS*/
+
+/*BOTONES*/
+.badge{
+    float: right;
+    background-color: @oscuro;
+}
+.btn-claro {
+    color: @white;
+    background-color: @claro;
+    border-color: @claro;
+    .active, .focus, &:active, &:focus, &:hover{
+        color: @white;
+        background-color: @oscuro;
+        border-color: @oscuro;
+    }
+}
+.btn-oscuro {
+    color: @white;
+    background-color: @oscuro;
+    border-color: @oscuro;
+    .active, .focus, &:active, &:focus, &:hover{
+        color: @white;
+        background-color: @claro;
+        border-color: @claro;
+    }
+}
+
+.margintop{
+    margin-top: 65px;
+    margin-bottom: 25px;
+}
+
+/*BOTONES*/
+
+.open{
+    .dropdown-toggle .btn-purple {
+        color: @white;
+        background-color: @oscuro;
+        border-color: @oscuro;
+    }
+}
+
+.panel-oscuro{
+    border-color: @oscuro;
+    .panel-heading{
+        color: @white;
+        background-color: @oscuro;
+        border-color: @oscuro;
+    }
+}
+
+.panel-claro{
+    border-color: @claro;
+    .panel-heading{
+        color: @white;
+        background-color: @claro;
+        border-color: @claro;
+    }
+}
+
+.mbottom50{
+    margin-bottom: 50px;
+}
+
+/*******TABLE*******/
+
+.table {
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 0px;
+}
+
+.ng-table th.sortable.sort-desc, .ng-table th.sortable.sort-asc {
+    background-color: @oscuro;
+    color: @white;
+    text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
+    &:active, &:focus, &:hover{
+        outline-color: @oscuro;
+    }
+}
+
+.pagination > li > a, .pagination > li > span {
+    position: relative;
+    float: left;
+    padding: 6px 12px;
+    line-height: 1.42857143;
+    text-decoration: none;
+    color: @oscuro;
+    background-color: @white;
+    border: 1px solid #ddd;
+    margin-left: -1px;
+}
+
+.pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus {
+    z-index: 3;
+    color: @white;
+    background-color: @oscuro;
+    border-color: @oscuro;
+    cursor: default;
+}
+
+.pagination > li > a:hover, .pagination > li > span:hover, .pagination > li > a:focus, .pagination > li > span:focus {
+    z-index: 2;
+    color: @oscuro;
+    background-color: #eeeeee;
+    border-color: #ddd;
+}
+
+.ng-table th.sortable .sort-indicator:after, .ng-table th.sortable .sort-indicator:before {
+    content: "";
+    border-width: 0 4px 4px;
+    border-style: solid;
+    border-color: #fff transparent;
+    visibility: visible;
+    right: 5px;
+    top: 50%;
+    position: absolute;
+    opacity: .3;
+    margin-top: -4px;
+}
+
+.ng-table th.sortable.sort-desc .sort-indicator:after {
+    border-bottom: none;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-top: 4px solid #fff;
+    visibility: visible;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    filter: alpha(opacity=60);
+    -khtml-opacity: 0.6;
+    -moz-opacity: 0.6;
+    opacity: 0.6;
+}
+
+/*******TABLE*******/
+
+/******RANKING STARTS*****/
+.angular-input-stars > li {
+    font-size: 25px;
+}
+/**
+ *  Do not remove the comments below. It's the markers used by gulp-inject to inject
+ *  all your less files automatically
+ */
+// injector
+// endinjector

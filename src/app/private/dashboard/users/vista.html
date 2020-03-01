@@ -1,0 +1,34 @@
+<div id="main" ng-controller="UsersController as userCtrl" ng-init="userCtrl.getUser()">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="page-header">
+                <center><h1><i class="fa fa-users"></i> User</h1></center>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div ng-repeat="alert in alerts" type="alert.type" class="alert alert-{{alert.type}}"><strong>{{ alert.msg }}</strong></div>
+            <!--<div class="col-md-4" ng-if="userCtrl.downloadFileURL">
+                <center><img ng-src="{{userCtrl.downloadFileURL}}" alt="{{userCtrl.editProfileFile.file_name}}" class="img-thumbnail"></center>
+            </div>
+            <div class="col-md-4" ng-if="!userCtrl.downloadFileURL">
+                <center><img ng-src="assets/images/defaultprofile.jpg" alt="Profile Image" class="img-thumbnail"></center>
+            </div>-->
+                <div class="col-md-12">
+                    <ul class="list-group">
+                        <li class="list-group-item"><strong>Name: </strong> {{userCtrl.editUser.name}}</li>
+                        <li class="list-group-item"><strong>Lastname: </strong> {{userCtrl.editUser.lastname}}</li>
+                        <li class="list-group-item"><strong>Email: </strong> {{userCtrl.editUser.email}}</li>
+                        <li class="list-group-item"><strong>Phone: </strong> {{userCtrl.editUser.phone}}</li>
+                        <li class="list-group-item"><strong>Address: </strong> {{userCtrl.editUser.address}}</li>
+                        <li class="list-group-item"><strong>User Type: </strong>{{userCtrl.editUser.user_type_name}}</li>
+                        <li class="list-group-item"><strong>Synagogue: </strong>{{userCtrl.editUser.synagogue_name}}</li>
+                        <li class="list-group-item"><strong>Status: </strong><span ng-if="userCtrl.editUser.active">Active</span><span ng-if="!userCtrl.editUser.active">Deactivated</span></li>
+                        <li class="list-group-item"><strong>Creation date: </strong>{{userCtrl.editUser.created_at | date:'medium'}}</li>
+                    </ul>
+                </div>
+        </div>
+        <div class="col-md-12">
+            <a ui-sref="dashboard.usuariosLista" class="btn btn-danger"><i class="fa fa-arrow-left"></i> Back</a>
+        </div>
+    </div>
+</div>

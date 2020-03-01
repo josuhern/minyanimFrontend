@@ -1,0 +1,22 @@
+<div id="main" ng-controller="SitesController as siteCtrl" ng-init="siteCtrl.getSite()">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="page-header">
+                <center><h1><i class="fas fa-synagogue"></i> Synagogue</h1></center>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div ng-repeat="alert in alerts" type="alert.type" class="alert alert-{{alert.type}}"><strong>{{ alert.msg }}</strong></div>
+            <div class="col-md-12">
+                <ul class="list-group">
+                    <li class="list-group-item"><strong>Name: </strong> {{siteCtrl.editSite.name}}</li>
+                    <li class="list-group-item"><strong>Address: </strong> {{siteCtrl.editSite.address}}</li>
+                    <li class="list-group-item"><strong>Phone: </strong> {{siteCtrl.editSite.phone}}</li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <a ui-sref="dashboard.sucursalLista" class="btn btn-danger"><i class="fa fa-arrow-left"></i> Back</a>
+        </div>
+    </div>
+</div>

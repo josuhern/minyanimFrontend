@@ -1,0 +1,68 @@
+<div id="main" ng-controller="UsersController as userCtrl">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="page-header">
+                <center><h1><i class="fa fa-users"></i> New User</h1></center>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <form class="form-style" name="userForm" ng-submit="userForm.$valid && userCtrl.saveUser(userForm)" novalidate>
+                <div ng-repeat="alert in alerts" type="alert.type" class="alert alert-{{alert.type}}"><strong>{{ alert.msg }}</strong></div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input type="text" ng-model="userCtrl.newUser.name" id="name" name="name" placeholder="Name" class="form-control" data-error="Please, write a name" required>
+                                <span ng-show="userForm.name.$dirty && userForm.name.$touched && !userForm.name.$valid && !userForm.name.$pristine">Please, write a name.</span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input type="text" ng-model="userCtrl.newUser.lastname" id="lastname" name="lastname" placeholder="Lastname" class="form-control" data-error="Plase, write a lastname" required>
+                                <span ng-show="userForm.lastname.$dirty && userForm.lastname.$touched && !userForm.lastname.$valid && !userForm.lastname.$pristine">Plase, write a lastname</span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input type="email" ng-model="userCtrl.newUser.email" id="email" name="email" placeholder="Email" class="form-control" data-error="That is not a valid email" required>
+                                <span ng-show="userForm.email.$dirty && userForm.email.$touched && !userForm.email.$valid && !userForm.email.$pristine">That is not a valid email.</span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input type="text" ng-model="userCtrl.newUser.phone" id="phone" name="phone" placeholder="Phone" class="form-control" data-error="Please, write a phone number">
+                                <span ng-show="userForm.phone.$dirty && userForm.phone.$touched && !userForm.phone.$valid && !userForm.phone.$pristine">Please, write a phone number.</span>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <input type="text" ng-model="userCtrl.newUser.address" id="address" name="address" placeholder="Address" class="form-control" data-error="Please, write an address">
+                                <span ng-show="userForm.address.$dirty && userForm.address.$touched && !userForm.address.$valid && !userForm.address.$pristine">Please, write an address.</span>
+                            </div>
+                        </div>
+                        <div class="col-md-12" ng-if="sidebar.allow == 'Root'">
+                            <div class="form-group">
+                                <select ng-model="userCtrl.newUser.synagogue_id" id="synagogue_id" name="synagogue_id" class="form-control"  data-error="Please, select a synagogue" required>
+                                    <option selected disabled value="">Select a Synagogue</option>
+                                    <option ng-repeat="x in userCtrl.sites" value="{{x.id}}">{{x.name}}</option>
+                                </select>
+                                <span ng-show="courseForm.synagogue_id.$dirty && courseForm.synagogue_id.$touched && !courseForm.synagogue_id.$valid && !courseForm.synagogue_id.$pristine">Please, select a synagogue</span>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <select ng-model="userCtrl.newUser.user_type_id" id="user_type_id" name="user_type_id" class="form-control"  data-error="Please, select an user type" required>
+                                    <option selected disabled value="">Select an user type</option>
+                                    <option ng-if="x.name != 'Root'" ng-repeat="x in userCtrl.user_types" value="{{x.id}}">{{x.name}}</option>
+                                </select>
+                                <span ng-show="userForm.user_type_id.$dirty && userForm.user_type_id.$touched && !userForm.user_type_id.$valid && !userForm.user_type_id.$pristine">Please, select an user type</span>
+                            </div>
+                        </div>
+                        <center><button ng-show="userForm.$valid || userCtrl.loading"  class="btn btn-oscuro" ng-disabled="userCtrl.loading"><i ng-show="userCtrl.loading" class="fa fa-circle-o-notch fa-spin"></i> Save</button></center>
+                    </form>
+        </div>
+        <div class="col-md-12">
+            <a ui-sref="dashboard.usuariosLista" class="btn btn-danger"><i class="fa fa-arrow-left"></i> Back</a>
+        </div>
+    </div>
+</div>

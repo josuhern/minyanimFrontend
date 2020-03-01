@@ -1,0 +1,115 @@
+/*
+.dashboard-sidebar {
+  
+}
+.liactive{
+    background-color: @oscuro;
+    color: @white !important;
+}
+.sideactive{
+    background: @oscuro;
+    color: #fff !important;
+    cursor: pointer;
+    a{
+        color: @white !important;
+        &:focus{
+            text-decoration: none;
+            outline: none;
+        }
+    }
+}
+.main-content {
+    margin-top: -140px;
+    float: right;
+}
+.panel-red{
+    border-color: @gris;
+    .panel-heading {
+        color: @white;
+        background-color: @oscuro;
+        border-color: @gris;
+    }
+}
+.accordion-toggle{
+    color: @white !important;
+}*/
+
+.sidebar {
+  background: @gris;
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  overflow-x: hidden;
+  padding-top: 0px;
+  transition: 0.5s;
+  img {
+    padding: 15px 60px;
+  }
+  ul {
+    list-style: none;
+    padding: 0;
+    li {
+      padding: 5px;
+      font-size: 20px;
+      color: @oscuro;
+      span:focus{
+        text-decoration: none;
+        outline: none;
+      }
+      i {
+        padding: 5px 0;
+      }
+      &:hover{
+        background: @oscuro;
+        color: @white !important;
+        cursor: pointer;
+        a{
+        color: @white !important;
+        &:focus, &:hover{
+          text-decoration: none;
+          outline: none;
+          }
+        }
+      }
+    }
+  }
+}
+
+/* The button used to open the sidebar */
+.openbtn {
+  font-size: 20px;
+  cursor: pointer;
+  background-color: #111;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  &:hover {
+      background-color: #444;
+    }
+}
+
+#main {
+  transition: margin-left .5s; /* If you want a transition effect */
+  padding: 20px;
+}
+
+.logoSideBar{
+    width: 7%;
+    position: fixed;
+    top: 12px;
+    margin-left: 20px;
+    @media (min-width: 320px) and (max-width: 480px) {
+        width: 22%;
+        top: 30px;
+    }
+}
+
+@media screen and (max-height: 450px) {
+  .sidebar {
+    padding-top: 15px;
+    a {font-size: 18px;}
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "name": "minyan",
+  "version": "0.0.0",
+  "dependencies": {
+    "angular-animate": "~1.5.3",
+    "angular-cookies": "~1.5.3",
+    "angular-touch": "~1.5.3",
+    "angular-sanitize": "~1.5.3",
+    "angular-messages": "~1.5.3",
+    "angular-aria": "~1.5.3",
+    "jquery": "~2.1.4",
+    "angular-resource": "~1.5.3",
+    "angular-ui-router": "~0.2.15",
+    "bootstrap": "~3.3.5",
+    "angular-bootstrap": "~1.3.3",
+    "malarkey": "yuanqing/malarkey#~1.3.1",
+    "angular-toastr": "~1.5.0",
+    "moment": "~2.10.6",
+    "animate.css": "~3.4.0",
+    "angular": "~1.5.3",
+    "font-awesome": "^5.9.0",
+    "ngmap": "^1.18.4",
+    "ngstorage": "^0.3.11",
+    "angular-jwt": "^0.1.11",
+    "ng-file-upload": "^12.2.13",
+    "ng-table": "^4.0.0",
+    "textAngular": "^1.5.16",
+    "ng-table-bundle": "^4.0.0",
+    "ng-table-excel-export": "*",
+    "csv-download": "ng-csv-download#^1.0.2",
+    "ng-csv": "^0.3.6"
+  },
+  "devDependencies": {
+    "angular-mocks": "~1.5.3"
+  },
+  "overrides": {
+    "bootstrap": {
+      "main": [
+        "less/bootstrap.less",
+        "dist/fonts/glyphicons-halflings-regular.eot",
+        "dist/fonts/glyphicons-halflings-regular.svg",
+        "dist/fonts/glyphicons-halflings-regular.ttf",
+        "dist/fonts/glyphicons-halflings-regular.woff",
+        "dist/fonts/glyphicons-halflings-regular.woff2"
+      ]
+    }
+  },
+  "resolutions": {
+    "jquery": "~2.1.4",
+    "angular": "~1.5.3"
+  }
+}
