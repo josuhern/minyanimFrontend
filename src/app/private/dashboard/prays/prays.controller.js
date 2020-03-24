@@ -1,0 +1,200 @@
+(function() {
+  "use strict";
+  angular.module("minyan").controller("PraysController", PraysCtrl);
+
+  function PraysCtrl(
+    Prays,
+    alertService,
+    $rootScope,
+    $state,
+    $stateParams,
+    $filter,
+    $q,
+    NgTableParams,
+    $log
+  ) {
+    var vm = this;
+    vm.newPrays = new Prays();
+    vm.loading = false;
+    vm.special = 0;
+    vm.changeSpecial = function(newVal) {
+      vm.special = newVal;
+    };
+    vm.today = new Date();
+    vm.yesterday = new Date(
+      vm.today.getFullYear(),
+      vm.today.getMonth(),
+      vm.today.getDate(),
+      0,
+      0,
+      0
+    );
+    vm.newPrays.from = vm.today;
+    vm.newPrays.to = new Date();
+    vm.newPrays.to.setDate(vm.today.getDate() + 1);
+    vm.newPrays.hour = new Date(
+      vm.today.getFullYear(),
+      vm.today.getMonth(),
+      vm.today.getDate(),
+      vm.today.getHours(),
+      vm.today.getMinutes(),
+      0
+    );
+    vm.queryPrays = function() {
+      vm.loading = true;
+      Prays.query()
+        .$promise.then(function(response) {
+          vm.prays = response;
+          vm.tableParams = new NgTableParams(
+            { page: 1, count: 6 },
+            { counts: [], dataset: vm.prays }
+          );
+          vm.loading = false;
+        })
+        .catch(function(response) {
+          vm.alerta("danger", "Sorry, Something went wrog");
+          vm.loading = false;
+          $log.info(response);
+        });
+    };
+    vm.getPray = function() {
+      Prays.get({ id: $stateParams.id })
+        .$promise.then(function(response) {
+          vm.editPray = new Prays();
+          vm.editPray = response;
+        })
+        .catch(function(response) {
+          vm.alerta("danger", "Sorry, Something went wrog");
+          $log.info(response);
+        });
+    };
+
+    vm.savePray = function(form) {
+      var dataToSend;
+      vm.today = new Date();
+      if (vm.newPrays.from < vm.yesterday || vm.newPrays.to < vm.yesterday) {
+        vm.alerta("warning", "Sorry the dates selected can not be in the past");
+      }
+      var fromDate = vm.newPrays.from;
+      var toDate = vm.newPrays.to;
+      if (!vm.special) {
+        vm.loading = true;
+        while (fromDate <= toDate) {
+          vm.prayToSend = new Prays();
+          vm.prayToSend.date = new Date(
+            fromDate.getFullYear(),
+            fromDate.getMonth(),
+            fromDate.getDate(),
+            vm.newPrays.hour.getHours(),
+            vm.newPrays.hour.getMinutes(),
+            0
+          );
+          vm.prayToSend.name = vm.newPrays.name;
+          vm.prayToSend.special = false;
+          dataToSend = angular.toJson({ pray: vm.prayToSend });
+          Prays.save(dataToSend)
+            .$promise.then(function() {
+              vm.prayToSend = new Prays();
+              form.$setPristine();
+              vm.loading = false;
+              vm.alerta("success", "Success! Pray added");
+            })
+            .catch(function(response) {
+              vm.loading = false;
+              vm.alerta("danger", "Sorry, Something went wrog");
+              $log.info(response);
+            });
+          fromDate.setDate(fromDate.getDate() + 1);
+        }
+      } else {
+        vm.loading = true;
+        vm.prayToSend = new Prays();
+        vm.prayToSend.date = new Date(
+          fromDate.getFullYear(),
+          fromDate.getMonth(),
+          fromDate.getDate(),
+          vm.newPrays.hour.getHours(),
+          vm.newPrays.hour.getMinutes(),
+          0
+        );
+        vm.prayToSend.name = vm.newPrays.name;
+        vm.prayToSend.description = vm.newPrays.description;
+        vm.prayToSend.special = true;
+        dataToSend = angular.toJson({ pray: vm.prayToSend });
+        Prays.save(dataToSend)
+          .$promise.then(function() {
+            vm.prayToSend = new Prays();
+            form.$setPristine();
+            vm.loading = false;
+            vm.alerta("success", "Success! Pray added");
+          })
+          .catch(function(response) {
+            vm.loading = false;
+            vm.alerta("danger", "Sorry, Something went wrog");
+            $log.info(response);
+          });
+      }
+      vm.special = 0;
+      vm.today = new Date();
+      vm.yesterday = new Date(
+        vm.today.getFullYear(),
+        vm.today.getMonth(),
+        vm.today.getDate(),
+        0,
+        0,
+        0
+      );
+      vm.newPrays.from = vm.today;
+      vm.newPrays.to = new Date();
+      vm.newPrays.to.setDate(vm.today.getDate() + 1);
+      vm.newPrays.hour = new Date(
+        vm.today.getFullYear(),
+        vm.today.getMonth(),
+        vm.today.getDate(),
+        vm.today.getHours(),
+        vm.today.getMinutes(),
+        0
+      );
+      vm.newPrays.name = "";
+      vm.newPrays.description = "";
+      vm.loading = false;
+    };
+
+    vm.updatePray = function(form) {
+      Prays.update({ id: vm.editPray.id }, vm.editPray)
+        .$promise.then(function(response) {
+          form.$setPristine();
+          vm.loading = false;
+          vm.alerta("success", "Success! Pray edited");
+          $log.info(response);
+        })
+        .catch(function(response) {
+          vm.alerta("danger", "Sorry, Something went wrog");
+          vm.loading = false;
+          $log.info(response);
+        });
+    };
+
+    vm.deletePray = function(thisPray) {
+      Prays.destroy({ id: thisPray.id })
+        .$promise.then(function() {
+          vm.alerta("success", "Pray deleted");
+          var index = vm.prays.indexOf(thisPray);
+          vm.prays.splice(index, 1);
+          vm.tableParams = new NgTableParams(
+            { page: 1, count: 6 },
+            { counts: [], dataset: vm.prays }
+          );
+        })
+        .catch(function(response) {
+          vm.alerta("danger", "Sorry, Something went wrog");
+          $log.info(response);
+        });
+    };
+
+    vm.alerta = function(tipo, message) {
+      alertService.add(tipo, message, 4000);
+    };
+    $rootScope.closeAlert = alertService.closeAlert;
+  }
+})();

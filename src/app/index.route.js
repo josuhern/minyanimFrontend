@@ -98,6 +98,26 @@ function routerConfig($stateProvider, $urlRouterProvider) {
         data : {requireLogin : true },
         templateUrl: "app/private/dashboard/sites/vista.html"
       })
+      .state('dashboard.addPray', {
+        url: "/addPray",
+        data : {requireLogin : true },
+        templateUrl: "app/private/dashboard/prays/add.html"
+      })
+      .state('dashboard.updatePray', {
+        url: "/updatePray/:id",
+        data : {requireLogin : true },
+        templateUrl: "app/private/dashboard/prays/update.html"
+      })
+      .state('dashboard.readPray', {
+        url: "/readPray/:id",
+        data : {requireLogin : true },
+        templateUrl: "app/private/dashboard/prays/read.html"
+      })
+      .state('dashboard.listPray', {
+        url: "/listPray",
+        data : {requireLogin : true },
+        templateUrl: "app/private/dashboard/prays/list.html"
+      })
     ;
     $urlRouterProvider.otherwise('/');
   }

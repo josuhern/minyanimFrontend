@@ -64,6 +64,11 @@
                             'name':'User Types',
                             'icon':'fa fa-cubes',
                             'url':'dashboard.tipoUsuarioLista'
+                            },
+                            {
+                                'name':'Prays',
+                                'icon':'fa fa-book',
+                                'url':'dashboard.listPray'
                             }
                             ];
                         break;

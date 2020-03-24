@@ -1,0 +1,166 @@
+<div id="main" ng-controller="PraysController as PrayCtrl">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="page-header">
+        <center>
+          <h1><i class="fa fa-book"></i> Add pray</h1>
+        </center>
+      </div>
+    </div>
+    <div class="col-md-12">
+      <form
+        class="form-style"
+        name="PrayForm"
+        ng-submit="PrayForm.$valid && PrayCtrl.savePray(PrayForm)"
+        novalidate
+      >
+        <div
+          ng-repeat="alert in alerts"
+          type="alert.type"
+          class="alert alert-{{alert.type}}"
+        >
+          <strong>{{ alert.msg }}</strong>
+        </div>
+        <div class="col-md-12">
+          <div class="form-group">
+            <label for="special">This is an special pray?</label>
+            <br />
+            <label
+              ><input
+                type="radio"
+                ng-checked="PrayCtrl.special"
+                ng-click="PrayCtrl.changeSpecial(1)"
+                value="1"
+              />Yes</label
+            >
+            <label
+              ><input
+                type="radio"
+                ng-checked="!PrayCtrl.special"
+                ng-click="PrayCtrl.changeSpecial(0)"
+                value="0"
+              />No</label
+            >
+          </div>
+        </div>
+        <div class="col-md-12">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input
+              type="text"
+              ng-model="PrayCtrl.newPrays.name"
+              placeholder="Name"
+              class="form-control"
+              id="name"
+              name="name"
+              data-error="Please, Write a name"
+              required
+            />
+            <span
+              ng-show="PrayForm.name.$dirty && PrayForm.name.$touched && !PrayForm.name.$valid && !PrayForm.name.$pristine"
+              >Please, Write a name.</span
+            >
+          </div>
+        </div>
+        <div class="col-md-12" ng-if="PrayCtrl.special">
+          <div class="form-group">
+            <label for="description">Description</label>
+            <textarea
+              type="text"
+              ng-model="PrayCtrl.newPrays.description"
+              placeholder="Description"
+              class="form-control"
+              id="description"
+              name="description"
+              data-error="Please, Write a description"
+              required
+            ></textarea>
+            <span
+              ng-show="PrayForm.description.$dirty && PrayForm.description.$touched && !PrayForm.description.$valid && !PrayForm.description.$pristine"
+              >Please, Write a description.</span
+            >
+          </div>
+        </div>
+        <div
+          ng-class="{'col-md-6': PrayCtrl.special == 0 , 'col-md-12': PrayCtrl.special==1}"
+        >
+          <div class="form-group">
+            <label for="from">Date to start</label>
+            <input
+              type="date"
+              ng-model="PrayCtrl.newPrays.from"
+              min="PrayCtrl.today"
+              placeholder="From"
+              class="form-control"
+              id="from"
+              name="from"
+              data-error="Please, Select from date"
+              required
+            />
+            <span
+              ng-show="PrayForm.from.$dirty && PrayForm.from.$touched && !PrayForm.from.$valid && !PrayForm.from.$pristine"
+              >Please, Select from date.</span
+            >
+          </div>
+        </div>
+        <div class="col-md-6" ng-if="!PrayCtrl.special">
+          <div class="form-group">
+            <label for="to">Date to end</label>
+            <input
+              type="date"
+              ng-model="PrayCtrl.newPrays.to"
+              min="PrayCtrl.today"
+              placeholder="To"
+              class="form-control"
+              id="to"
+              name="to"
+              data-error="Please, Select to date"
+              required
+            />
+            <span
+              ng-show="PrayForm.to.$dirty && PrayForm.to.$touched && !PrayForm.to.$valid && !PrayForm.to.$pristine"
+              >Please, Select to date.</span
+            >
+          </div>
+        </div>
+        <div class="col-md-12">
+          <div class="form-group">
+            <label for="hour">Time</label>
+            <input
+              type="time"
+              id="hour"
+              name="hour"
+              ng-model="PrayCtrl.newPrays.hour"
+              placeholder="HH:mm"
+              class="form-control"
+              data-error="Please, Select and hour"
+              required
+            />
+            <span
+              ng-show="PrayForm.hour.$dirty && PrayForm.hour.$touched && !PrayForm.hour.$valid && !PrayForm.hour.$pristine"
+              >Please, Select an hour.</span
+            >
+          </div>
+        </div>
+        <center>
+          <button
+            ng-show="PrayForm.$valid || PrayCtrl.loading"
+            class="btn btn-oscuro"
+            ng-disabled="PrayCtrl.loading"
+          >
+            <i
+              ng-show="PrayCtrl.loading"
+              class="fa fa-circle-o-notch fa-spin"
+            ></i>
+            Save
+          </button>
+        </center>
+      </form>
+    </div>
+    <div class="col-md-12">
+      <a ui-sref="dashboard.listPray" class="btn btn-danger"
+        ><i class="fa fa-arrow-left"></i> Back</a
+      >
+    </div>
+  </div>
+</div>

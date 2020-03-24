@@ -1,0 +1,20 @@
+<div id="main" ng-controller="UserTypesController as userTypeCtrl" ng-init="userTypeCtrl.getUserType()">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="page-header">
+                <center><h1><i class="fa fa-cubes"></i>  User Type</h1></center>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div ng-repeat="alert in alerts" type="alert.type" class="alert alert-{{alert.type}}"><strong>{{ alert.msg }}</strong></div>
+            <div class="col-md-12">
+                <ul class="list-group">
+                    <li class="list-group-item"><strong>Name: </strong> {{userTypeCtrl.editUserType.name}}</li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <a ui-sref="dashboard.tipoUsuarioLista" class="btn btn-danger"><i class="fa fa-arrow-left"></i> Back</a>
+        </div>
+    </div>
+</div>
