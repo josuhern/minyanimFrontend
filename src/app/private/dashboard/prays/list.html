@@ -31,73 +31,74 @@
         >New Pray</a
       >
     </div>
+    <br class="visible-xs visible-sm" />
     <div class="col-md-12">
-      <div class="table-responsive">
-        <div
-          ng-repeat="alert in alerts"
-          type="alert.type"
-          class="alert alert-{{alert.type}}"
+      <div class="btn-group">
+        <button
+          class="btn btn-oscuro"
+          mwl-date-modifier
+          date="PrayCtrl.viewDate"
+          decrement="PrayCtrl.calendarView"
+          ng-click="PrayCtrl.cellIsOpen = false"
         >
-          <strong>{{ alert.msg }}</strong>
-        </div>
-        <table class="table" ng-table="PrayCtrl.tableParams" show-filter="true">
-          <tbody>
-            <tr ng-repeat="x in $data">
-              <td
-                data-title="'Name'"
-                filter="{name: 'text'}"
-                data-sortable="'name'"
-              >
-                {{x.name}}
-              </td>
-              <td
-                data-title="'Date'"
-                filter="{date: 'text'}"
-                data-sortable="'date'"
-              >
-                {{x.date | date:'mediumDate'}}
-              </td>
-
-              <td
-                data-title="'Hour'"
-                filter="{date: 'text'}"
-                data-sortable="'date'"
-              >
-                {{x.date | date:'shortTime'}}
-              </td>
-              <td
-                data-title="'Special'"
-                filter="{special: 'text'}"
-                data-sortable="'special'"
-              >
-                {{x.special}}
-              </td>
-              <td ng-if="sidebar.permisos.delete && sidebar.deleteEnable">
-                <button
-                  class="btn btn-danger btn-block"
-                  ng-click="PrayCtrl.deletePray(x)"
-                >
-                  Delete
-                </button>
-              </td>
-              <td ng-if="sidebar.permisos.edit">
-                <a
-                  class="btn btn-warning btn-block"
-                  ui-sref="dashboard.tipoUsuarioEditar({id: x.id})"
-                  >Edit</a
-                >
-              </td>
-              <td ng-if="sidebar.permisos.read">
-                <a
-                  class="btn btn-success btn-block"
-                  ui-sref="dashboard.tipoUsuarioVista({id: x.id})"
-                  >More</a
-                >
-              </td>
-            </tr>
-          </tbody>
-        </table>
+          Previous
+        </button>
+        <button
+          class="btn btn-default"
+          mwl-date-modifier
+          date="PrayCtrl.viewDate"
+          set-to-today
+          ng-click="PrayCtrl.cellIsOpen = false"
+        >
+          Today
+        </button>
+        <button
+          class="btn btn-oscuro"
+          mwl-date-modifier
+          date="PrayCtrl.viewDate"
+          increment="PrayCtrl.calendarView"
+          ng-click="PrayCtrl.cellIsOpen = false"
+        >
+          Next
+        </button>
       </div>
+      <div class="btn-group">
+        <label
+          class="btn btn-oscuro"
+          ng-model="PrayCtrl.calendarView"
+          uib-btn-radio="'month'"
+          ng-click="PrayCtrl.cellIsOpen = false"
+          >Month</label
+        >
+        <label
+          class="btn btn-oscuro"
+          ng-model="PrayCtrl.calendarView"
+          uib-btn-radio="'week'"
+          ng-click="PrayCtrl.cellIsOpen = false"
+          >Week</label
+        >
+        <label
+          class="btn btn-oscuro"
+          ng-model="PrayCtrl.calendarView"
+          uib-btn-radio="'day'"
+          ng-click="PrayCtrl.cellIsOpen = false"
+          >Day</label
+        >
+      </div>
+    </div>
+
+    <br class="visible-xs visible-sm" />
+    <div class="col-md-12">
+      <mwl-calendar
+        view="PrayCtrl.calendarView"
+        view-date="PrayCtrl.viewDate"
+        events="PrayCtrl.events"
+        view-title="calendarTitle"
+        on-event-click="eventClicked(calendarEvent)"
+        on-event-times-changed="calendarEvent.startsAt = calendarNewEventStart; calendarEvent.endsAt = calendarNewEventEnd"
+        cell-is-open="true"
+      >
+      </mwl-calendar>
     </div>
   </div>
 </div>

@@ -40,15 +40,38 @@
       vm.today.getMinutes(),
       0
     );
+    vm.viewDate = new Date();
+    vm.calendarView = "day";
+    vm.events = [];
     vm.queryPrays = function() {
       vm.loading = true;
       Prays.query()
         .$promise.then(function(response) {
           vm.prays = response;
-          vm.tableParams = new NgTableParams(
-            { page: 1, count: 6 },
-            { counts: [], dataset: vm.prays }
-          );
+          angular.forEach(vm.prays, function(value) {
+            var start = new Date(value.date);
+            var end = new Date(
+              start.getFullYear(),
+              start.getMonth(),
+              start.getDate(),
+              start.getHours() + 1,
+              start.getMinutes(),
+              0
+            );
+            var thisPray = {
+              title: value.name,
+              startsAt: start, // A javascript date object for when the event starts
+              endsAt: end, // Optional - a javascript date object for when the event ends
+              color: {
+                primary: "#215c5f", // the primary event color (should be darker than secondary)
+                secondary: "#3f7073" // the secondary event color (should be lighter than primary)
+              },
+              draggable: false, //Allow an event to be dragged and dropped
+              resizable: false, //Allow an event to be resizable
+              incrementsBadgeTotal: false
+            };
+            vm.events.push(thisPray);
+          });
           vm.loading = false;
         })
         .catch(function(response) {

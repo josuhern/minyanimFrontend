@@ -10,6 +10,7 @@
     "ngMessages",
     "ngAria",
     "ngResource",
+    "mwl.calendar",
     "ui.router",
     "ui.bootstrap",
     "toastr",
