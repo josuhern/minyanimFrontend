@@ -113,6 +113,11 @@ function routerConfig($stateProvider, $urlRouterProvider) {
         data : {requireLogin : true },
         templateUrl: "app/private/dashboard/prays/read.html"
       })
+      .state('dashboard.controlsPray', {
+        url: "/controlsPray",
+        data : {requireLogin : true },
+        templateUrl: "app/private/dashboard/prays/controls.html"
+      })
       .state('dashboard.listPray', {
         url: "/listPray",
         data : {requireLogin : true },

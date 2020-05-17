@@ -1,24 +1,136 @@
-<div id="main" ng-controller="UserTypesController as userTypeCtrl" ng-init="userTypeCtrl.getUserType()">
+<div id="main" ng-controller="PraysController as PrayCtrl" ng-init="PrayCtrl.getPray()">
     <div class="row">
         <div class="col-md-12">
             <div class="page-header">
-                <center><h1><i class="fa fa-cubes"></i> Edit {{userTypeCtrl.editUserType.name}}</h1></center>
+                <center><h1><i class="fa fa-cubes"></i> Edit {{PrayCtrl.editPray.name}}</h1></center>
             </div>
         </div>
         <div class="col-md-12">
-            <form class="form-style" name="userTypeForm" ng-submit="userTypeForm.$valid && userTypeCtrl.updateUserType(userTypeForm)" novalidate>
+            <form class="form-style" name="prayForm" ng-submit="prayForm.$valid && PrayCtrl.updatePray(prayForm)" novalidate>
                 <div ng-repeat="alert in alerts" type="alert.type" class="alert alert-{{alert.type}}"><strong>{{ alert.msg }}</strong></div>
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <input type="text" ng-model="userTypeCtrl.editUserType.name" id="name" name="name" placeholder="Name" class="form-control" data-error="Please, Write a name" required>
-                                <span ng-show="userTypeForm.name.$dirty && userTypeForm.name.$touched && !userTypeForm.name.$valid && !userTypeForm.name.$pristine">Please, Write a name.</span>
-                            </div>
-                        </div>
-                        <center><button ng-show="userTypeForm.$valid || userTypeCtrl.loading"  class="btn btn-oscuro" ng-disabled="userTypeCtrl.loading"><i ng-show="userTypeCtrl.loading" class="fa fa-circle-o-notch fa-spin"></i> Save</button></center>
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <label for="special">This is an special pray?</label>
+                        <br />
+                        <label
+                          ><input
+                            type="radio"
+                            ng-checked="PrayCtrl.editPray.special"
+                            ng-click="PrayCtrl.changeEditSpecial(1)"
+                            value="1"
+                          />Yes</label
+                        >
+                        <label
+                          ><input
+                            type="radio"
+                            ng-checked="!PrayCtrl.editPray.special"
+                            ng-click="PrayCtrl.changeEditSpecial(0)"
+                            value="0"
+                          />No</label
+                        >
+                      </div>
+                    </div>
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <label for="name">Name</label>
+                        <input
+                          type="text"
+                          ng-model="PrayCtrl.editPray.name"
+                          placeholder="Name"
+                          class="form-control"
+                          id="name"
+                          name="name"
+                          data-error="Please, Write a name"
+                          required
+                        />
+                        <span
+                          ng-show="PrayForm.name.$dirty && PrayForm.name.$touched && !PrayForm.name.$valid && !PrayForm.name.$pristine"
+                          >Please, Write a name.</span
+                        >
+                      </div>
+                    </div>
+                    <div class="col-md-12" ng-if="PrayCtrl.editPray.special">
+                      <div class="form-group">
+                        <label for="description">Description</label>
+                        <textarea
+                          type="text"
+                          ng-model="PrayCtrl.editPray.description"
+                          placeholder="Description"
+                          class="form-control"
+                          id="description"
+                          name="description"
+                          data-error="Please, Write a description"
+                          required
+                        ></textarea>
+                        <span
+                          ng-show="PrayForm.description.$dirty && PrayForm.description.$touched && !PrayForm.description.$valid && !PrayForm.description.$pristine"
+                          >Please, Write a description.</span
+                        >
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="from">Date</label>
+                        <input
+                          type="date"
+                          ng-model="PrayCtrl.editPray.date"
+                          min="PrayCtrl.today"
+                          placeholder="From"
+                          class="form-control"
+                          id="from"
+                          name="from"
+                          data-error="Please, Select from date"
+                          required
+                        />
+                        <span
+                          ng-show="PrayForm.from.$dirty && PrayForm.from.$touched && !PrayForm.from.$valid && !PrayForm.from.$pristine"
+                          >Please, Select from date.</span
+                        >
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="hour">Time</label>
+                        <input
+                          type="time"
+                          id="hour"
+                          name="hour"
+                          ng-model="PrayCtrl.editPray.date"
+                          placeholder="HH:mm"
+                          class="form-control"
+                          data-error="Please, Select and hour"
+                          required
+                        />
+                        <span
+                          ng-show="PrayForm.hour.$dirty && PrayForm.hour.$touched && !PrayForm.hour.$valid && !PrayForm.hour.$pristine"
+                          >Please, Select an hour.</span
+                        >
+                      </div>
+                    </div>
+                          
+
+                        <center>
+                            <button 
+                                ng-show="prayForm.$valid || PrayCtrl.loading"  
+                                class="btn btn-oscuro" 
+                                ng-disabled="PrayCtrl.loading">
+                                    <i ng-show="PrayCtrl.loading" class="fa fa-circle-o-notch fa-spin"></i> 
+                                    Update
+                            </button>
+                            
+                        </center>
                     </form>
+                    <center>
+                    <button ng-click="PrayCtrl.deletePrayEditing(PrayCtrl.editPray)"
+                            class="btn btn-danger" 
+                            ng-disabled="PrayCtrl.loading">
+                            <i ng-show="PrayCtrl.loading" class="fa fa-circle-o-notch fa-spin"></i> 
+                            Delete
+                    </button>
+                    </center>
         </div>
         <div class="col-md-12">
-            <a ui-sref="dashboard.tipoUsuarioLista" class="btn btn-danger"><i class="fa fa-arrow-left"></i> Back</a>
+            <a ui-sref="dashboard.controlsPray" class="btn btn-danger"><i class="fa fa-arrow-left"></i> Back</a>
         </div>
     </div>
 </div>

@@ -1,20 +1,24 @@
-<div id="main" ng-controller="UserTypesController as userTypeCtrl" ng-init="userTypeCtrl.getUserType()">
+<div id="main" ng-controller="PraysController as PrayCtrl" ng-init="PrayCtrl.getPray()">
     <div class="row">
         <div class="col-md-12">
             <div class="page-header">
-                <center><h1><i class="fa fa-cubes"></i>  User Type</h1></center>
+                <center><h1><i class="fa fa-book"></i>  Pray</h1></center>
             </div>
         </div>
         <div class="col-md-12">
             <div ng-repeat="alert in alerts" type="alert.type" class="alert alert-{{alert.type}}"><strong>{{ alert.msg }}</strong></div>
             <div class="col-md-12">
                 <ul class="list-group">
-                    <li class="list-group-item"><strong>Name: </strong> {{userTypeCtrl.editUserType.name}}</li>
+                    <li class="list-group-item"><strong>Name: </strong> {{PrayCtrl.editPray.name}}</li>
+                    <li class="list-group-item" ng-if="PrayCtrl.editPray.special"><strong>Description: </strong> {{PrayCtrl.editPray.description}}</li>
+                    <li class="list-group-item"><strong>Date: </strong> {{PrayCtrl.editPray.date | date:"EEEE, MMMM d, y"}}</li>
+                    <li class="list-group-item"><strong>Hour: </strong> {{PrayCtrl.editPray.date | date:"HH:mma"}}</li>
+                    <li class="list-group-item"><strong>Special service: </strong> {{PrayCtrl.editPray.special}}</li>
                 </ul>
             </div>
         </div>
         <div class="col-md-12">
-            <a ui-sref="dashboard.tipoUsuarioLista" class="btn btn-danger"><i class="fa fa-arrow-left"></i> Back</a>
+            <a ui-sref="dashboard.controlsPray" class="btn btn-danger"><i class="fa fa-arrow-left"></i> Back</a>
         </div>
     </div>
 </div>

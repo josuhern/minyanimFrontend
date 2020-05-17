@@ -1,0 +1,110 @@
+<div
+  id="main"
+  ng-controller="PraysController as PrayCtrl"
+  ng-init="PrayCtrl.getPraysBySynagogue()"
+>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="page-header">
+        <center>
+          <h1><i class="fa fa-book"></i> Prays</h1>
+        </center>
+      </div>
+    </div>
+    <div class="col-md-2">
+      <button
+        type="button"
+        ng-if="sidebar.permisos.delete && sidebar.downloadEnable"
+        class="btn btn-default"
+        ng-csv="PrayCtrl.user_types"
+        filename="Prays.csv"
+        charset="utf-8"
+      >
+        <span class="glyphicon glyphicon-download-alt">&nbsp;</span>Download CSV
+      </button>
+    </div>
+    <div class="col-md-2 col-md-offset-6">
+      <a
+        ng-if="sidebar.permisos.write"
+        ui-sref="dashboard.listPray"
+        class="btn btn-oscuro btn-block"
+        >See Calendar</a
+      >
+    </div>
+    <div class="col-md-2">
+      <a
+        ng-if="sidebar.permisos.write"
+        ui-sref="dashboard.addPray"
+        class="btn btn-oscuro btn-block"
+        >New Pray</a
+      >
+    </div>
+    <div class="col-md-12">
+      <div class="table-responsive">
+        <div
+          ng-repeat="alert in alerts"
+          type="alert.type"
+          class="alert alert-{{alert.type}}"
+        >
+          <strong>{{ alert.msg }}</strong>
+        </div>
+        <table class="table" ng-table="PrayCtrl.tableParams" show-filter="true">
+          <tbody>
+            <tr ng-repeat="x in $data">
+              <td
+                data-title="'Name'"
+                filter="{name: 'text'}"
+                data-sortable="'name'"
+              >
+                {{x.name}}
+              </td>
+              <td
+                data-title="'Date'"
+                filter="{date: 'text'}"
+                data-sortable="'date'"
+              >
+                {{x.date |  date:"EEEE, MMMM d, y"}}
+              </td>
+              <td
+                data-title="'Hour'"
+                filter="{date: 'text'}"
+                data-sortable="'date'"
+              >
+                {{x.date | date:"HH:mma"}}
+              </td>
+              <td
+                data-title="'Special'"
+                filter="{special: 'text'}"
+                data-sortable="'special'"
+              >
+                {{x.special}}
+              </td>
+              <td ng-if="sidebar.permisos.delete && sidebar.deleteEnable">
+                <button
+                  class="btn btn-danger btn-block"
+                  ng-click="PrayCtrl.deletePray(x)"
+                >
+                  Delete
+                </button>
+              </td>
+              <td ng-if="sidebar.permisos.edit">
+                <a
+                  class="btn btn-warning btn-block"
+                  ui-sref="dashboard.updatePray({id: x.id})"
+                  >Edit</a
+                >
+              </td>
+              <td ng-if="sidebar.permisos.read">
+                <a
+                  class="btn btn-success btn-block"
+                  ui-sref="dashboard.readPray({id: x.id})"
+                  >More</a
+                >
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

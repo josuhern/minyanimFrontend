@@ -1,15 +1,14 @@
 /* global malarkey:false, moment:false */
-(function() {
-  'use strict';
+(function () {
+  "use strict";
 
   angular
-    .module('minyan')
-    .constant('malarkey', malarkey)
-    .constant('moment', moment)
+    .module("minyan")
+    .constant("malarkey", malarkey)
+    .constant("moment", moment)
     .constant("SERVER_URL", {
-      "PROD": "http://localhost:4000"
-      //"PROD": "https://minyanim.herokuapp.com"
+      PROD: "http://localhost:4000"
+      //PROD: "https://minyanim.herokuapp.com"
       //"PROD": "http://67.205.137.43"
-	});
-
+    });
 })();
