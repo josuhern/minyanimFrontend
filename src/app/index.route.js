@@ -123,6 +123,11 @@ function routerConfig($stateProvider, $urlRouterProvider) {
         data : {requireLogin : true },
         templateUrl: "app/private/dashboard/prays/list.html"
       })
+      .state('dashboard.minyan', {
+        url: "/minyan",
+        data : {requireLogin : true },
+        templateUrl: "app/private/dashboard/minyan/minyan.html"
+      })
     ;
     $urlRouterProvider.otherwise('/');
   }

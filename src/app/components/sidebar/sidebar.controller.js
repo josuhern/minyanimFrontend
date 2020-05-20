@@ -53,6 +53,11 @@
           };
           vm.menu = [
             {
+              name: "Minyan",
+              icon: "fas fa-torah",
+              url: "dashboard.minyan"
+            },
+            {
               name: "Profile",
               icon: "fa fa-user-circle-o",
               url: "dashboard.perfil"

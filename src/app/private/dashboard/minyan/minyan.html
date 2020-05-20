@@ -1,0 +1,30 @@
+<div
+  id="main"
+  ng-controller="MinyanController as minyanCtrl"
+  ng-init="minyanCtrl.getUser()"
+>
+<div class="row">
+  <div class="col-md-12">
+    <center>
+      <h3>
+        {{minyanCtrl.viewDate | date:"EEEE, MMMM d, y"}}<br /><small
+          >{{minyanCtrl.viewDate | date:"HH:mma"}}</small
+        >
+      </h3>
+    </center>
+  </div>
+  <div class="col-md-12">
+    <center>
+      <div class="btn-group" role="group" aria-label="...">
+        <button type="button" class="btn btn-danger">
+          Sorry, Not available
+        </button>
+        <button type="button" class="btn btn-warning">
+          Present, if needed
+        </button>
+        <button type="button" class="btn btn-success">I will be there</button>
+      </div>
+    </center>
+  </div>
+</div>
+</div>
