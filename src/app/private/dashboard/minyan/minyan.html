@@ -1,7 +1,7 @@
 <div
   id="main"
   ng-controller="MinyanController as minyanCtrl"
-  ng-init="minyanCtrl.getUser()"
+  ng-init="minyanCtrl.getTodayPrays()"
 >
 <div class="row">
   <div class="col-md-12">
@@ -13,18 +13,69 @@
       </h3>
     </center>
   </div>
-  <div class="col-md-12">
-    <center>
-      <div class="btn-group" role="group" aria-label="...">
-        <button type="button" class="btn btn-danger">
-          Sorry, Not available
-        </button>
-        <button type="button" class="btn btn-warning">
-          Present, if needed
-        </button>
-        <button type="button" class="btn btn-success">I will be there</button>
-      </div>
-    </center>
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+      <uib-accordion close-others="oneAtATime">
+        <uib-accordion-group heading="{{pray.name}}" panel-class="{{pray.class}}" is-open="pray.open" ng-repeat="pray in minyanCtrl.prays">
+          <div class="col-md-3 mbottom50">
+            <center>
+            <h2>{{pray.name}}</h2>
+            <p>{{pray.date | date:"EEEE, MMMM d, y"}}</p>
+            <p>{{pray.date | date:"HH:mma"}}</p>
+            <p ng-if='pray.special'>{{pray.description}}</p>
+            <div class="btn-group-vertical" role="group" aria-label="...">
+              <button type="button" class="btn btn-success" ng-disabled="pray.disabled" ng-click="minyanCtrl.saveMinyan(pray.id, 1)">
+                I will be there
+              </button>
+              <button type="button" class="btn btn-warning" ng-disabled="pray.disabled" ng-click="minyanCtrl.saveMinyan(pray.id, 2)">
+                Present, if needed
+              </button>
+              <button type="button" class="btn btn-danger" ng-disabled="pray.disabled" ng-click="minyanCtrl.saveMinyan(pray.id, 3)">
+                Sorry, Not available
+              </button>
+            </div>
+          </center>
+          </div>
+          <div class="col-md-3">
+            <div class="panel panel-success">
+              <div class="panel-heading">
+                <h3 class="panel-title">Confirmed</h3>
+              </div>
+              <div class="panel-body">
+                <div class="list-group">
+                  <a class="list-group-item list-group-item-success" ng-repeat="attendance in pray.Attendance" ng-if="attendance.status==1"><i class="fa fa-user"></i> {{attendance.user_name}} {{attendace.user_lastname}}</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="panel panel-warning">
+              <div class="panel-heading">
+                <h3 class="panel-title">Present if needed</h3>
+              </div>
+              <div class="panel-body">
+                <div class="list-group">
+                  <a class="list-group-item list-group-item-warning" ng-repeat="attendance in pray.Attendance" ng-if="attendance.status==2"><i class="fa fa-user"></i> {{attendance.user_name}} {{attendace.user_lastname}}</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="panel panel-danger">
+              <div class="panel-heading">
+                <h3 class="panel-title">Not available</h3>
+              </div>
+              <div class="panel-body">
+                <div class="list-group">
+                  <a class="list-group-item list-group-item-danger" ng-repeat="attendance in pray.Attendance" ng-if="attendance.status==3"><i class="fa fa-user"></i> {{attendance.user_name}} {{attendace.user_lastname}}</a>
+                </div>
+              </div>
+            </div>
+            
+          </div>
+        </uib-accordion-group>
+      </uib-accordion>
+    </div>
   </div>
 </div>
 </div>

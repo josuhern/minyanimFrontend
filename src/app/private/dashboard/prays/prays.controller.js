@@ -60,7 +60,6 @@
       PraysBySynagogue.query({ synagogue_id: tokenPayload.synagogue_id })
         .$promise.then(function (response) {
           vm.prays = response;
-          $log.info(vm.prays);
           vm.tableParams = new NgTableParams(
             { page: 1, count: 6 },
             { counts: [], dataset: vm.prays }

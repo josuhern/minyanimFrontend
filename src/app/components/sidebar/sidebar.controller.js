@@ -93,6 +93,11 @@
           };
           vm.menu = [
             {
+              name: "Minyan",
+              icon: "fas fa-torah",
+              url: "dashboard.minyan"
+            },
+            {
               name: "Profile",
               icon: "fa fa-user",
               url: "dashboard.perfil"
@@ -123,6 +128,11 @@
             delete: false
           };
           vm.menu = [
+            {
+              name: "Minyan",
+              icon: "fas fa-torah",
+              url: "dashboard.minyan"
+            },
             {
               name: "Profile",
               icon: "fa fa-user",

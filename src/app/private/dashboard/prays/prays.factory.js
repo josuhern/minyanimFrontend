@@ -3,7 +3,8 @@
   angular
     .module("minyan")
     .factory("Prays", praysFunction)
-    .factory("PraysBySynagogue", praysBySynagogueFunction);
+    .factory("PraysBySynagogue", praysBySynagogueFunction)
+    .factory("TodayPrays", todayPraysFunction);
 
   function praysFunction($resource, SERVER_URL, jwtHelper, $localStorage) {
     var oAuth = $localStorage.currentUser;
@@ -32,6 +33,29 @@
     var oAuth = $localStorage.currentUser;
     return $resource(
       SERVER_URL.PROD + "/praysBySynagogue/:id",
+      { id: "@myid" },
+      {
+        get: { method: "GET", headers: { Authorization: oAuth } },
+        save: { method: "POST", headers: { Authorization: oAuth } },
+        query: {
+          method: "GET",
+          isArray: true,
+          headers: { Authorization: oAuth }
+        },
+        update: { method: "PUT", headers: { Authorization: oAuth } },
+        destroy: { method: "DELETE", headers: { Authorization: oAuth } }
+      }
+    );
+  }
+  function todayPraysFunction(
+    $resource,
+    SERVER_URL,
+    jwtHelper,
+    $localStorage
+  ) {
+    var oAuth = $localStorage.currentUser;
+    return $resource(
+      SERVER_URL.PROD + "/todayPrays/:id",
       { id: "@myid" },
       {
         get: { method: "GET", headers: { Authorization: oAuth } },
