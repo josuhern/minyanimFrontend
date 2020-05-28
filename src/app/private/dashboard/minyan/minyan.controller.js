@@ -6,10 +6,9 @@
       .controller('MinyanController', MinyanController);
   
     /** @ngInject */
-    function MinyanController(Minyan, TodayPrays, Attendance, alertService, $rootScope, jwtHelper, $localStorage, SERVER_URL, $log){
+    function MinyanController(Minyan, TodayPrays, Attendance, alertService, $rootScope, jwtHelper, $localStorage, SERVER_URL, $log, $interval){
       var vm = this;
       vm.tokenPayload = jwtHelper.decodeToken($localStorage.currentUser);
-      $log.info(vm.tokenPayload);
       vm.viewDate = new Date();
       vm.getTodayPrays = function () {
         vm.loading = true;
@@ -44,8 +43,15 @@
             value.Attendance=response;
           })
         });
-        $log.info(vm.prays);
       }
+
+      $interval(function() {
+        angular.forEach(vm.prays, function (value) {
+          Attendance.query({pray_id: value.id}).$promise.then(function (response) {
+            value.Attendance=response;
+          })
+        });
+      },1000);
 
       vm.saveMinyan = function(pray_id, status){
         vm.loading = true;
@@ -58,6 +64,7 @@
             vm.newMinyan = new Minyan();
             vm.loading = false;
             vm.alerta("success","Success! Your status has been updated");
+            vm.updateAttendance();
         }).catch(function(response){
             vm.loading = false;
             vm.alerta("danger","Sorry, Something went wrog");
