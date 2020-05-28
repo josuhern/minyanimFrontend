@@ -16,7 +16,7 @@
           .$promise.then(function (response) {
             vm.prays = response;
             angular.forEach(vm.prays, function (value) {
-              let thisDate = new Date(value.date);
+              var thisDate = new Date(value.date);
               if(vm.viewDate > thisDate){
                 value.open = false;
                 value.disabled = true;
