@@ -12,7 +12,7 @@
       vm.viewDate = new Date();
       vm.getTodayPrays = function () {
         vm.loading = true;
-        TodayPrays.query({ synagogue_id: vm.tokenPayload.synagogue_id })
+        TodayPrays.query({ synagogue_id: vm.tokenPayload.synagogue_id, timezome: Intl.DateTimeFormat().resolvedOptions().timeZone })
           .$promise.then(function (response) {
             vm.prays = response;
             angular.forEach(vm.prays, function (value) {
@@ -46,6 +46,7 @@
       }
 
       $interval(function() {
+        vm.viewDate = new Date();
         angular.forEach(vm.prays, function (value) {
           Attendance.query({pray_id: value.id}).$promise.then(function (response) {
             value.Attendance=response;
