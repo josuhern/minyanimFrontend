@@ -17,6 +17,9 @@
     <div class="col-md-8 col-md-offset-2">
       <uib-accordion close-others="oneAtATime">
         <uib-accordion-group heading="{{pray.name}}" panel-class="{{pray.class}}" is-open="pray.open" ng-repeat="pray in minyanCtrl.prays">
+          <div class="col-md-12" ng-if="pray.minyan>=10">
+            <div class="alert alert-success" role="alert"><h5>We have a Minyan!</h5></div>
+          </div>
           <div class="col-md-3 mbottom50">
             <center>
             <h2>{{pray.name}}</h2>

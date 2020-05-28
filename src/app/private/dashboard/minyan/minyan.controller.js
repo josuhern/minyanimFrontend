@@ -6,7 +6,7 @@
       .controller('MinyanController', MinyanController);
   
     /** @ngInject */
-    function MinyanController(Minyan, TodayPrays, Attendance, alertService, $rootScope, jwtHelper, $localStorage, SERVER_URL, $log, $interval){
+    function MinyanController(Minyan, TodayPrays, Attendance, $filter, alertService, $rootScope, jwtHelper, $localStorage, SERVER_URL, $log, $interval){
       var vm = this;
       vm.tokenPayload = jwtHelper.decodeToken($localStorage.currentUser);
       vm.viewDate = new Date();
@@ -41,6 +41,7 @@
         angular.forEach(vm.prays, function (value) {
           Attendance.query({pray_id: value.id}).$promise.then(function (response) {
             value.Attendance=response;
+            value.minyan = $filter('filter')(value.Attendance, {status: 1}).length;
           })
         });
       }
@@ -50,6 +51,7 @@
         angular.forEach(vm.prays, function (value) {
           Attendance.query({pray_id: value.id}).$promise.then(function (response) {
             value.Attendance=response;
+            value.minyan = $filter('filter')(value.Attendance, {status: 1}).length;
           })
         });
       },1000);
