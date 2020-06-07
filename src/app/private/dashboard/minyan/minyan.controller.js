@@ -66,7 +66,6 @@
         Minyan.save(dataToSend).$promise.then(function(){
             vm.newMinyan = new Minyan();
             vm.loading = false;
-            vm.alerta("success","Success! Your status has been updated");
             vm.updateAttendance();
         }).catch(function(response){
             vm.loading = false;

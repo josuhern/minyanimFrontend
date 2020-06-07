@@ -33,38 +33,31 @@
             <form class="form-style" name="userForm" ng-submit="userForm.$valid && perfilCtrl.updateUser(userForm)" novalidate>
                 <div ng-repeat="alert in alerts" type="alert.type" class="alert alert-{{alert.type}}"><strong>{{ alert.msg }}</strong></div>
                         <div class="col-md-6">
-                            <div class="form-group">
+                            <div class="form-group required">
                                 <label>Name</label>
                                 <input type="text" ng-model="perfilCtrl.editUser.name" id="name" name="name" placeholder="First name" class="form-control" data-error="Campo Requerido" required>
                                 <span ng-show="userForm.name.$dirty && userForm.name.$touched && !userForm.name.$valid && !userForm.name.$pristine">Please, write your first name.</span>
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <div class="form-group">
+                            <div class="form-group required">
                                 <label>Lastname</label>
                                 <input type="text" ng-model="perfilCtrl.editUser.lastname" id="lastname" name="lastname" placeholder="Last name" class="form-control" data-error="Campo Requerido" required>
                                 <span ng-show="userForm.lastname.$dirty && userForm.lastname.$touched && !userForm.lastname.$valid && !userForm.lastname.$pristine">Please, write your last name</span>
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <div class="form-group">
+                            <div class="form-group required">
                                 <label>Email</label>
                                 <input type="email" ng-model="perfilCtrl.editUser.email" id="email" name="email" placeholder="Correo" class="form-control" data-error="Correo no valido" required>
                                 <span ng-show="userForm.email.$dirty && userForm.email.$touched && !userForm.email.$valid && !userForm.email.$pristine">Parece que ese correo no es valido.</span>
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <div class="form-group">
+                            <div class="form-group required">
                                 <label>Phone</label>
-                                <input type="text" ng-model="perfilCtrl.editUser.phone" id="phone" name="phone" placeholder="Phone" class="form-control" data-error="Campo Requerido">
+                                <input type="text" ng-model="perfilCtrl.editUser.phone" id="phone" name="phone" placeholder="Phone" class="form-control" data-error="Campo Requerido" required>
                                 <span ng-show="userForm.phone.$dirty && userForm.phone.$touched && !userForm.phone.$valid && !userForm.phone.$pristine">Please, write your phone.</span>
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <label>Address</label>
-                                <input type="text" ng-model="perfilCtrl.editUser.address" id="address" name="address" placeholder="Address" class="form-control" data-error="Campo Requerido">
-                                <span ng-show="userForm.address.$dirty && userForm.address.$touched && !userForm.address.$valid && !userForm.address.$pristine">Please, write your address.</span>
                             </div>
                         </div>
                         <center><button ng-show="userForm.$valid || perfilCtrl.loading"  class="btn btn-oscuro" ng-disabled="perfilCtrl.loading"><i ng-show="perfilCtrl.loading" class="fa fa-circle-o-notch fa-spin"></i> Save</button></center>
@@ -74,16 +67,16 @@
                 </div>
             <form class="form-style" name="passwordForm" ng-submit="passwordForm.$valid && perfilCtrl.updatePassword(passwordForm)" novalidate>
                 <div class="col-md-6">
-                    <div class="form-group">
+                    <div class="form-group required">
                         <label>New password</label>
                         <input type="password" ng-model="perfilCtrl.password" id="password" name="password" placeholder="New Password" class="form-control" data-error="New password is needed"  ng-minlength="6" required>
                         <span ng-show="passwordForm.password.$dirty && passwordForm.password.$touched && !passwordForm.password.$valid && !passwordForm.password.$pristine">New password has to be at least 6 characters.</span>
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <div class="form-group">
+                    <div class="form-group required">
                         <label>Repeat password</label>
-                        <input type="password" ng-model="perfilCtrl.password_confirmation" id="password_confirmation" name="password_confirmation" placeholder="New Password Again" class="form-control" data-error="No coinciden" ng-pattern="perfilCtrl.password" required>
+                        <input type="password" ng-model="perfilCtrl.password_confirmation" id="password_confirmation" name="password_confirmation" placeholder="Repeat password" class="form-control" data-error="No coinciden" ng-pattern="perfilCtrl.password" required>
                         <span ng-show="passwordForm.password_confirmation.$dirty && passwordForm.password_confirmation.$touched && !passwordForm.password_confirmation.$valid && !passwordForm.password_confirmation.$pristine">Passwords don't match</span>
                     </div>
                 </div>
@@ -93,15 +86,21 @@
             <div class="col-md-12" ng-if="sidebar.permisos.delete">
                 <div class="page-header"><h4>Settings</h4></div>
                 <div class="col-md-2">
+                    <label>Enable delete</label>
                     <div class="form-group">
-                        <label>Enable delete</label>
-                        <input type="checkbox" ng-model="sidebar.deleteEnable" id="deleteEnable" name="deleteEnable" class="form-control">
+                        <label class="switch">
+                            <input type="checkbox" ng-model="sidebar.deleteEnable" id="deleteEnable" name="deleteEnable" class="form-control">
+                            <div class="slider round"></div>
+                        </label>
                     </div>
                 </div>
                 <div class="col-md-2">
+                    <label>Enable downloads</label>
                     <div class="form-group">
-                        <label>Enable downloads</label>
-                        <input type="checkbox" ng-model="sidebar.downloadEnable" id="downloadEnable" name="downloadEnable" class="form-control">
+                        <label class="switch">
+                            <input type="checkbox" ng-model="sidebar.downloadEnable" id="downloadEnable" name="downloadEnable" class="form-control">
+                            <div class="slider round"></div>
+                        </label>
                     </div>
                 </div>
             </div>

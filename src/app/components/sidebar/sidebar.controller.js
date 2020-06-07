@@ -15,15 +15,19 @@
     vm.menu = [];
     vm.deleteEnable = false;
     vm.downloadEnable = false;
-    vm.openNav = function () {
-      angular.element("#mySidebar")[0].style.width = "250px";
-      angular.element("#main")[0].style.marginLeft = "250px";
+    vm.openNav = function (){
+      angular.element("#mySidebar")[0].style.width = "155px";
+      angular.element("#main")[0].style.marginLeft = "155px";
+      angular.element("#menu1")[0].style.display = "none";
+      angular.element("#menu2")[0].style.display = "block";
     };
 
     /* Set the width of the sidebar to 0 and the left margin of the page content to 0 */
     vm.closeNav = function () {
       angular.element("#mySidebar")[0].style.width = "0";
       angular.element("#main")[0].style.marginLeft = "0";
+      angular.element("#menu1")[0].style.display = "block";
+      angular.element("#menu2")[0].style.display = "none";
     };
 
     vm.newTab = function (url, param) {
@@ -78,8 +82,8 @@
               url: "dashboard.tipoUsuarioLista"
             },
             {
-              name: "Prays",
-              icon: "fa fa-book",
+              name: "Schedule",
+              icon: "fas fa-clock",
               url: "dashboard.controlsPray"
             }
           ];
@@ -114,8 +118,8 @@
               url: "dashboard.miSucursal"
             },
             {
-              name: "Prays",
-              icon: "fa fa-book",
+              name: "Schedule",
+              icon: "fas fa-clock",
               url: "dashboard.controlsPray"
             }
           ];
@@ -137,11 +141,6 @@
               name: "Profile",
               icon: "fa fa-user",
               url: "dashboard.perfil"
-            },
-            {
-              name: "Minyan",
-              icon: "fa fa-users",
-              url: "dashboard.prospectosLista"
             }
           ];
           break;

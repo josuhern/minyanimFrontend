@@ -1,6 +1,11 @@
 <div class="dashboard-sidebar">
+	<div id="menu2" class="menu" ng-click="sidebar.closeNav()" style="display: none;">
+		<div class="changebar1"></div>
+		<div class="changebar2"></div>
+		<div class="changebar3"></div>
+	</div>
 	<ul>
-		<img ng-click="sidebar.closeNav()" src="assets/images/logo.png" alt="My Trucks" class="img-responsive img-center">
+		<!--<img ng-click="sidebar.closeNav()" src="assets/images/logo.png" alt="My Trucks" class="img-responsive img-center">-->
         <li ng-repeat="x in sidebar.menu" ng-click="sidebar.closeNav()" ui-sref-active="sideactive" ui-sref="{{x.url}}"><i class="{{x.icon}}"></i> {{x.name}}</li>
 		<li ng-click="sidebar.logout()"><i class="fa fa-fw fa-sign-out"></i> Log Out</li>
 	</ul>

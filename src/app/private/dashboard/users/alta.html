@@ -24,7 +24,8 @@
           <strong>{{ alert.msg }}</strong>
         </div>
         <div class="col-md-6">
-          <div class="form-group">
+          <div class="form-group required">
+            <label>Name</label>
             <input
               type="text"
               ng-model="userCtrl.newUser.name"
@@ -42,7 +43,8 @@
           </div>
         </div>
         <div class="col-md-6">
-          <div class="form-group">
+          <div class="form-group required">
+            <label>Lastname</label>
             <input
               type="text"
               ng-model="userCtrl.newUser.lastname"
@@ -60,7 +62,8 @@
           </div>
         </div>
         <div class="col-md-6">
-          <div class="form-group">
+          <div class="form-group required">
+            <label>Email</label>
             <input
               type="email"
               ng-model="userCtrl.newUser.email"
@@ -78,7 +81,8 @@
           </div>
         </div>
         <div class="col-md-6">
-          <div class="form-group">
+          <div class="form-group required">
+            <label>Phone</label>
             <input
               type="text"
               ng-model="userCtrl.newUser.phone"
@@ -87,6 +91,7 @@
               placeholder="Phone"
               class="form-control"
               data-error="Please, write a phone number"
+              required
             />
             <span
               ng-show="userForm.phone.$dirty && userForm.phone.$touched && !userForm.phone.$valid && !userForm.phone.$pristine"
@@ -94,25 +99,9 @@
             >
           </div>
         </div>
-        <div class="col-md-12">
-          <div class="form-group">
-            <input
-              type="text"
-              ng-model="userCtrl.newUser.address"
-              id="address"
-              name="address"
-              placeholder="Address"
-              class="form-control"
-              data-error="Please, write an address"
-            />
-            <span
-              ng-show="userForm.address.$dirty && userForm.address.$touched && !userForm.address.$valid && !userForm.address.$pristine"
-              >Please, write an address.</span
-            >
-          </div>
-        </div>
         <div class="col-md-12" ng-if="sidebar.allow == 'Root'">
-          <div class="form-group">
+          <div class="form-group required">
+            <label>Synagogue</label>
             <select
               ng-model="userCtrl.newUser.synagogue_id"
               id="synagogue_id"
@@ -133,7 +122,8 @@
           </div>
         </div>
         <div class="col-md-12">
-          <div class="form-group">
+          <div class="form-group required">
+            <label>User Type</label>
             <select
               ng-model="userCtrl.newUser.user_type_id"
               id="user_type_id"
@@ -152,7 +142,7 @@
             </select>
             <span
               ng-show="userForm.user_type_id.$dirty && userForm.user_type_id.$touched && !userForm.user_type_id.$valid && !userForm.user_type_id.$pristine"
-              >Please, select an user type</span
+              >Please, select a user type</span
             >
           </div>
         </div>

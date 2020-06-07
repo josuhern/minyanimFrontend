@@ -18,6 +18,12 @@
     $rootScope.$state = $state;
     $rootScope.$on("$stateChangeSuccess", function() {
       angular.element("html,body").animate({ scrollTop: 0 }, "slow");
+      if(angular.element("#mySidebar")[0]||angular.element("#main")[0]){
+        angular.element("#mySidebar")[0].style.width = "0";
+        angular.element("#main")[0].style.marginLeft = "0";
+        angular.element("#menu1")[0].style.display = "block";
+        angular.element("#menu2")[0].style.display = "none";
+      }
     });
     $rootScope.$on("$stateChangeStart", function(
       event,

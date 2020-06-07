@@ -157,7 +157,6 @@
           );
           vm.prayToSend.name = vm.newPrays.name;
           vm.prayToSend.special = false;
-          $log.info(vm.prayToSend);
           dataToSend = angular.toJson({ pray: vm.prayToSend });
           Prays.save(dataToSend)
             .$promise.then(function () {
@@ -188,7 +187,6 @@
         vm.prayToSend.name = vm.newPrays.name;
         vm.prayToSend.description = vm.newPrays.description;
         vm.prayToSend.special = true;
-        $log.info(vm.prayToSend);
         dataToSend = angular.toJson({ pray: vm.prayToSend });
         Prays.save(dataToSend)
           .$promise.then(function () {

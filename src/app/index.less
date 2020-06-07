@@ -23,15 +23,44 @@
 @smartphones: ~"only screen and (max-width: 479px)";
 @tablets: ~"only screen and (min-width: 768px) and (max-width: 959px)";
 
-body{
-  /*  position: relative;
-    padding-bottom: 13rem;
-	height: 100%;
-    min-height: 100%;
-  background-image: url("https://stmed.net/sites/default/files/blue-white-wallpapers-25171-712462.jpg");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;*/
+.menu{
+    position: fixed;
+    top: 12px;
+    margin-left: 20px;
+    .bar1, .bar2, .bar3 {
+      width: 35px;
+      height: 5px;
+      background-color: #333;
+      margin: 6px 0;
+      transition: 0.4s;
+    }
+    .changebar1 {
+        width: 35px;
+        height: 5px;
+        background-color: #333;
+        margin: 6px 0;
+        transition: 0.4s;
+        -webkit-transform: rotate(-45deg) translate(-9px, 6px);
+        transform: rotate(-45deg) translate(-9px, 6px);
+    }
+
+    .changebar2 {
+        opacity: 0;width: 35px;
+        height: 5px;
+        background-color: #333;
+        margin: 6px 0;
+        transition: 0.4s;
+    }
+
+    .changebar3 {
+        width: 35px;
+        height: 5px;
+        background-color: #333;
+        margin: 6px 0;
+        transition: 0.4s;
+        -webkit-transform: rotate(45deg) translate(-8px, -8px);
+        transform: rotate(45deg) translate(-8px, -8px);
+    }
 }
 
 footer {
@@ -72,6 +101,82 @@ a {
         color: @oscuro;
     }
 }
+.form-group.required>label:after{
+    content:"*";
+    color:red;
+    margin-left: 3px;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 90px;
+    height: 30px;
+  }
+  
+  .switch input {display:none;}
+  
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ca2222;
+    -webkit-transition: .4s;
+    transition: .4s;
+     border-radius: 30px;
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 20px;
+    width: 20px;
+    left: 4px;
+    bottom: 5px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+    border-radius: 50%;
+  }
+  
+  input:checked + .slider {
+    background-color: #2ab934;
+  }
+  
+  input:focus + .slider {
+    box-shadow: 0 0 1px #2196F3;
+  }
+  
+  input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(62px);
+  }
+  
+  /*------ ADDED CSS ---------*/
+  .slider:after
+  {
+   content:'OFF';
+   color: white;
+   display: block;
+   position: absolute;
+   transform: translate(-50%,-50%);
+   top: 50%;
+   left: 50%;
+   font-size: 10px;
+   font-family: Verdana, sans-serif;
+  }
+  
+  input:checked + .slider:after
+  {  
+    content:'ON';
+  }
+  
+  /*--------- END --------*/
+
 input[type="file"]:focus, input[type="radio"]:focus, input[type="checkbox"]:focus{
     border-color: @oscuro;
     outline: 0;

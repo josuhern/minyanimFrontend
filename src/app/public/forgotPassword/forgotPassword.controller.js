@@ -12,12 +12,12 @@
 			ForgotPassword.save({email: vm.email}).$promise.then(function(){
                 form.$setPristine();
                 vm.loading= false;
-                vm.alerta("success","Hemos enviado una contraseña nueva a tu correo electrónico, gracias");
+                vm.alerta("success","New password has been send to your email");
                 vm.email = undefined;
             }).catch(function(response){
                 if(response.status==401 || response.status==500){
                     vm.loading= false;
-                    vm.alerta("danger","Tu correo electrónico es incorrecto");
+                    vm.alerta("danger","Wrong email address");
                 }
             });
 		};

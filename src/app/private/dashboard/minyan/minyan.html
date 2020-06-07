@@ -18,7 +18,7 @@
       <uib-accordion close-others="oneAtATime">
         <uib-accordion-group heading="{{pray.name}}" panel-class="{{pray.class}}" is-open="pray.open" ng-repeat="pray in minyanCtrl.prays">
           <div class="col-md-12" ng-if="pray.minyan>=10">
-            <div class="alert alert-success" role="alert"><h5>We have a Minyan!</h5></div>
+            <div class="alert alert-success animated infinite tada" role="alert"><h5 class="">We have a Minyan!</h5></div>
           </div>
           <div class="col-md-3 mbottom50">
             <center>
@@ -31,12 +31,13 @@
                 I will be there
               </button>
               <button type="button" class="btn btn-warning" ng-disabled="pray.disabled" ng-click="minyanCtrl.saveMinyan(pray.id, 2)">
-                Present, if needed
+                Available, if needed
               </button>
               <button type="button" class="btn btn-danger" ng-disabled="pray.disabled" ng-click="minyanCtrl.saveMinyan(pray.id, 3)">
                 Sorry, Not available
               </button>
             </div>
+            <button class="btn btn-info">Send reminder</button>
           </center>
           </div>
           <div class="col-md-3">
@@ -54,7 +55,7 @@
           <div class="col-md-3">
             <div class="panel panel-warning">
               <div class="panel-heading">
-                <h3 class="panel-title">Present if needed</h3>
+                <h3 class="panel-title">Available if needed</h3>
               </div>
               <div class="panel-body">
                 <div class="list-group">

@@ -12,42 +12,35 @@
                 <h4>User data</h4>
                 </div>
                         <div class="col-md-5">
-                            <div class="form-group">
+                            <div class="form-group required">
                                 <label>Name</label>
                                 <input type="text" ng-model="userCtrl.editUser.name" id="name" name="name" placeholder="Name" class="form-control" data-error="Please, write a name" required>
                                 <span ng-show="userForm.name.$dirty && userForm.name.$touched && !userForm.name.$valid && !userForm.name.$pristine">Please, write a name.</span>
                             </div>
                         </div>
                         <div class="col-md-7">
-                            <div class="form-group">
+                            <div class="form-group required">
                                 <label>Lastname</label>
                                 <input type="text" ng-model="userCtrl.editUser.lastname" id="lastname" name="lastname" placeholder="Lastname" class="form-control" data-error="Please, write a lastname" required>
                                 <span ng-show="userForm.lastname.$dirty && userForm.lastname.$touched && !userForm.lastname.$valid && !userForm.lastname.$pristine">Please, write a lastname</span>
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <div class="form-group">
+                            <div class="form-group required">
                                 <label>Email</label>
                                 <input type="email" ng-model="userCtrl.editUser.email" id="email" name="email" placeholder="Email" class="form-control" data-error="That is not a valid email" required>
                                 <span ng-show="userForm.email.$dirty && userForm.email.$touched && !userForm.email.$valid && !userForm.email.$pristine">That is not a valid email.</span>
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <div class="form-group">
+                            <div class="form-group required">
                                 <label>Phone</label>
-                                <input type="text" ng-model="userCtrl.editUser.phone" id="phone" name="phone" placeholder="Phone" class="form-control" data-error="Please, write a phone number">
+                                <input type="text" ng-model="userCtrl.editUser.phone" id="phone" name="phone" placeholder="Phone" class="form-control" data-error="Please, write a phone number" required>
                                 <span ng-show="userForm.phone.$dirty && userForm.phone.$touched && !userForm.phone.$valid && !userForm.phone.$pristine">Please, write a phone number.</span>
                             </div>
                         </div>
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <label>Address</label>
-                                <input type="text" ng-model="userCtrl.editUser.address" id="address" name="address" placeholder="Address" class="form-control" data-error="Please, write an address.">
-                                <span ng-show="userForm.address.$dirty && userForm.address.$touched && !userForm.address.$valid && !userForm.address.$pristine">Please, write an address.</span>
-                            </div>
-                        </div>
                         <div class="col-md-12" ng-if="sidebar.allow == 'Root'">
-                            <div class="form-group">
+                            <div class="form-group required">
                                 <label>Synagogue</label>
                                 <select ng-model="userCtrl.editUser.synagogue_id" id="synagogue_id" name="synagogue_id" class="form-control"  data-error="Please, select a synagogue" required>
                                     <option selected disabled value="">Select a Synagogue</option>
@@ -57,7 +50,7 @@
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <div class="form-group">
+                            <div class="form-group required">
                                 <label>User Type</label>
                                 <select ng-model="userCtrl.editUser.user_type_id" id="user_type_id" name="user_type_id" class="form-control"  data-error="Please, select an user type" required>
                                     <option selected disabled value="">Select an User type</option>
@@ -67,9 +60,12 @@
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <div class="form-group">
-                                <label>Active User</label>
-                                <input type="checkbox" ng-model="userCtrl.editUser.active" id="active" name="active" class="form-control" data-error="Active user">
+                            <label>User status</label>
+                            <div class="form-group required">
+                                <label class="switch">
+                                    <input type="checkbox" ng-model="userCtrl.editUser.active" id="active" name="active" class="form-control" data-error="Active user">
+                                    <div class="slider round"></div>
+                                </label>
                             </div>
                         </div>
                         <center><button ng-show="userForm.$valid || userCtrl.loading"  class="btn btn-oscuro" ng-disabled="userCtrl.loading"><i ng-show="userCtrl.loading" class="fa fa-circle-o-notch fa-spin"></i> Save</button></center>
@@ -79,14 +75,16 @@
                 </div>
             <form class="form-style" name="passwordForm" ng-submit="passwordForm.$valid && userCtrl.updatePassword(passwordForm)" novalidate>
                 <div class="col-md-6">
-                    <div class="form-group">
+                    <div class="form-group required">
+                        <label>New password</label>
                         <input type="password" ng-model="userCtrl.password" id="password" name="password" placeholder="New password" class="form-control" data-error="Contraseña requerida"  ng-minlength="6" required>
                         <span ng-show="passwordForm.password.$dirty && passwordForm.password.$touched && !passwordForm.password.$valid && !passwordForm.password.$pristine">New password has to be at least 6 characters.</span>
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <div class="form-group">
-                        <input type="password" ng-model="userCtrl.password_confirmation" id="password_confirmation" name="password_confirmation" placeholder="New password again" class="form-control" data-error="No coinciden" ng-pattern="userCtrl.password" required>
+                    <div class="form-group required">
+                        <label>Repeat new password</label>
+                        <input type="password" ng-model="userCtrl.password_confirmation" id="password_confirmation" name="password_confirmation" placeholder="Repeat new password" class="form-control" data-error="No coinciden" ng-pattern="userCtrl.password" required>
                         <span ng-show="passwordForm.password_confirmation.$dirty && passwordForm.password_confirmation.$touched && !passwordForm.password_confirmation.$valid && !passwordForm.password_confirmation.$pristine">Password don't mathc</span>
                     </div>
                 </div>

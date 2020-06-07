@@ -3,7 +3,7 @@
     <div class="col-md-12">
       <div class="page-header">
         <center>
-          <h1><i class="fa fa-book"></i> Add pray</h1>
+          <h1><i class="fas fa-clock"></i> Schedule</h1>
         </center>
       </div>
     </div>
@@ -22,29 +22,18 @@
           <strong>{{ alert.msg }}</strong>
         </div>
         <div class="col-md-12">
-          <div class="form-group">
-            <label for="special">This is an special pray?</label>
-            <br />
-            <label
-              ><input
-                type="radio"
-                ng-checked="PrayCtrl.special"
-                ng-click="PrayCtrl.changeSpecial(1)"
-                value="1"
-              />Yes</label
-            >
-            <label
-              ><input
-                type="radio"
-                ng-checked="!PrayCtrl.special"
-                ng-click="PrayCtrl.changeSpecial(0)"
-                value="0"
-              />No</label
-            >
+          <div class="form-group required">
+            <label for="special">This is an special appointment?</label>
+                    <div class="form-group">
+                        <label class="switch">
+                            <input type="checkbox" ng-model="PrayCtrl.special" id="special" name="special" class="form-control">
+                            <div class="slider round"></div>
+                        </label>
+                    </div>
           </div>
         </div>
         <div class="col-md-12">
-          <div class="form-group">
+          <div class="form-group required">
             <label for="name">Name</label>
             <input
               type="text"
@@ -63,7 +52,7 @@
           </div>
         </div>
         <div class="col-md-12" ng-if="PrayCtrl.special">
-          <div class="form-group">
+          <div class="form-group required">
             <label for="description">Description</label>
             <textarea
               type="text"
@@ -84,7 +73,7 @@
         <div
           ng-class="{'col-md-6': PrayCtrl.special == 0 , 'col-md-12': PrayCtrl.special==1}"
         >
-          <div class="form-group">
+          <div class="form-group required">
             <label for="from">Date to start</label>
             <input
               type="date"
@@ -104,7 +93,7 @@
           </div>
         </div>
         <div class="col-md-6" ng-if="!PrayCtrl.special">
-          <div class="form-group">
+          <div class="form-group required">
             <label for="to">Date to end</label>
             <input
               type="date"
@@ -124,7 +113,7 @@
           </div>
         </div>
         <div class="col-md-12">
-          <div class="form-group">
+          <div class="form-group required">
             <label for="hour">Time</label>
             <input
               type="time"

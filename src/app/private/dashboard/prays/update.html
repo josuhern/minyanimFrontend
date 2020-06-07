@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col-md-12">
             <div class="page-header">
-                <center><h1><i class="fa fa-cubes"></i> Edit {{PrayCtrl.editPray.name}}</h1></center>
+                <center><h1><i class="fas fa-clock"></i> Edit {{PrayCtrl.editPray.name}}</h1></center>
             </div>
         </div>
         <div class="col-md-12">
@@ -10,28 +10,17 @@
                 <div ng-repeat="alert in alerts" type="alert.type" class="alert alert-{{alert.type}}"><strong>{{ alert.msg }}</strong></div>
                     <div class="col-md-12">
                       <div class="form-group">
-                        <label for="special">This is an special pray?</label>
-                        <br />
-                        <label
-                          ><input
-                            type="radio"
-                            ng-checked="PrayCtrl.editPray.special"
-                            ng-click="PrayCtrl.changeEditSpecial(1)"
-                            value="1"
-                          />Yes</label
-                        >
-                        <label
-                          ><input
-                            type="radio"
-                            ng-checked="!PrayCtrl.editPray.special"
-                            ng-click="PrayCtrl.changeEditSpecial(0)"
-                            value="0"
-                          />No</label
-                        >
+                        <label for="special">This is an special appointment?</label>
+                        <div class="form-group">
+                          <label class="switch">
+                              <input type="checkbox" ng-model="PrayCtrl.editPray.special" id="special" name="special" class="form-control">
+                              <div class="slider round"></div>
+                          </label>
+                        </div>
                       </div>
                     </div>
                     <div class="col-md-12">
-                      <div class="form-group">
+                      <div class="form-group required">
                         <label for="name">Name</label>
                         <input
                           type="text"
@@ -50,7 +39,7 @@
                       </div>
                     </div>
                     <div class="col-md-12" ng-if="PrayCtrl.editPray.special">
-                      <div class="form-group">
+                      <div class="form-group required">
                         <label for="description">Description</label>
                         <textarea
                           type="text"
@@ -69,7 +58,7 @@
                       </div>
                     </div>
                     <div class="col-md-6">
-                      <div class="form-group">
+                      <div class="form-group required">
                         <label for="from">Date</label>
                         <input
                           type="date"
@@ -89,7 +78,7 @@
                       </div>
                     </div>
                     <div class="col-md-6">
-                      <div class="form-group">
+                      <div class="form-group required">
                         <label for="hour">Time</label>
                         <input
                           type="time"
