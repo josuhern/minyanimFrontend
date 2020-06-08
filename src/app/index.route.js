@@ -128,6 +128,11 @@ function routerConfig($stateProvider, $urlRouterProvider) {
         data : {requireLogin : true },
         templateUrl: "app/private/dashboard/minyan/minyan.html"
       })
+      .state('dashboard.sendSms', {
+        url: "/sendSms",
+        data : {requireLogin : true },
+        templateUrl: "app/private/dashboard/sms/sendSms.html"
+      })
     ;
     $urlRouterProvider.otherwise('/');
   }

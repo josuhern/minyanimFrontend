@@ -85,6 +85,11 @@
               name: "Schedule",
               icon: "fas fa-clock",
               url: "dashboard.controlsPray"
+            },
+            {
+              name: "Get it touch",
+              icon: "fas fa-comment-dots",
+              url: "dashboard.sendSms"
             }
           ];
           break;
@@ -121,6 +126,11 @@
               name: "Schedule",
               icon: "fas fa-clock",
               url: "dashboard.controlsPray"
+            },
+            {
+              name: "Get it touch",
+              icon: "fas fa-comment-dots",
+              url: "dashboard.sendSms"
             }
           ];
           break;
@@ -141,6 +151,11 @@
               name: "Profile",
               icon: "fa fa-user",
               url: "dashboard.perfil"
+            },
+            {
+              name: "Get it touch",
+              icon: "fas fa-comment-dots",
+              url: "dashboard.sendSms"
             }
           ];
           break;
