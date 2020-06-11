@@ -6,7 +6,7 @@
       .controller('MinyanController', MinyanController);
   
     /** @ngInject */
-    function MinyanController(Minyan, TodayPrays, Attendance, $filter, alertService, $rootScope, jwtHelper, $localStorage, SERVER_URL, $log, $interval){
+    function MinyanController(Minyan, TodayPrays, Attendance, ActiveUsers, $filter, alertService, $rootScope, jwtHelper, $localStorage, SERVER_URL, $log, $interval){
       var vm = this;
       vm.tokenPayload = jwtHelper.decodeToken($localStorage.currentUser);
       vm.viewDate = new Date();
@@ -83,6 +83,26 @@
           vm.alerta("danger", "Sorry, Something went wrog");
           $log.info(response);
         });
+    }
+
+    vm.sendReminder = function(){
+      ActiveUsers.query({user_id: vm.tokenPayload.user_id}).$promise.then(function(response){
+          vm.activeUsers = response;
+          var phoneNumbers = [];
+          angular.forEach(vm.activeUsers, function (value) {
+            if(value.phone.length>=10)
+              phoneNumbers.push(value.phone.trim().substr(value.phone.length - 10));
+          });
+          var defaultMessage = "This is the default message";
+          var smsResponse = sendSMSv2(phoneNumbers, defaultMessage);
+          if(smsResponse)
+            vm.alerta("success","All right, reminders were sent");
+          else
+            vm.alerta("danger","Sorry, Something went wrog");
+      }).catch(function(response){
+          vm.alerta("danger","Sorry, Something went wrog");
+          $log.info(response);
+      });
     }
           
           vm.alerta = function(tipo, message) {

@@ -25,7 +25,7 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label>Phone</label>
-                                <input type="text" ng-model="siteCtrl.editSite.phone" placeholder="Phone" class="form-control" id="phone" name="phone" data-error="Please, write a phone number" required>
+                                <input type="number" ng-model="siteCtrl.editSite.phone" placeholder="Phone" class="form-control" id="phone" name="phone" data-error="Please, write a phone number" required>
                                 <span ng-show="siteForm.phone.$dirty && siteForm.phone.$touched && !siteForm.phone.$valid && !siteForm.phone.$pristine">Please, write a phone number.</span>
                             </div>
                         </div>

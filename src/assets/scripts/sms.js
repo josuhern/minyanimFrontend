@@ -46,6 +46,13 @@ function sendSMS() {
     }
     if(SMS) SMS.sendSMS(sendto, textmsg, function(){}, function(str){alert(str);});
 }
+function sendSMSv2(sendToArray, textmsg){
+    if(SMS){
+        SMS.sendSMS(sendToArray, textmsg, function(){}, function(str){alert(str);});
+        return true;
+    }
+    return false;
+}
 function listSMS() {
     updateData('');
     
@@ -62,7 +69,6 @@ function listSMS() {
             }
         }
         updateData( html );
-        
     }, function(err){
         updateStatus('error list sms: ' + err);
     });
