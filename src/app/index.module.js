@@ -19,6 +19,7 @@
     "ngFileUpload",
     "textAngular",
     "ngTable",
-    "ngCsv"
+    "ngCsv",
+    "ngIntlTelInput"
   ]);
 })();

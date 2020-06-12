@@ -91,7 +91,6 @@
         .$promise.then(function (response) {
           vm.editUser = new Users();
           vm.editUser = response;
-          vm.editUser.phone = parseInt(vm.editUser.phone);
           /*UniqueFile.get({owner:vm.editUser.id}).$promise.then(function(file){
                     if(file.id){
                         vm.editProfileFile = file;

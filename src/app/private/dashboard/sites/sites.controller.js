@@ -24,7 +24,6 @@
             Sites.get({id: $stateParams.id}).$promise.then(function(response){
                 vm.editSite = new Sites();
                 vm.editSite = response;
-                vm.editSite.phone = parseInt(vm.editSite.phone);
             }).catch(function(response){
                 vm.alerta("danger","Sorry, Something went wrog");
                 $log.info(response);

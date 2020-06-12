@@ -6,7 +6,7 @@
     .config(config);
 
   /** @ngInject */
-  function config($logProvider, toastrConfig) {
+  function config($logProvider, toastrConfig, ngIntlTelInputProvider) {
     // Enable log
     $logProvider.debugEnabled(true);
 
@@ -16,6 +16,13 @@
     toastrConfig.positionClass = 'toast-top-right';
     toastrConfig.preventDuplicates = true;
     toastrConfig.progressBar = true;
+
+    //ngIntlTelInputProvider.set({initialCountry: 'us'});
+    ngIntlTelInputProvider.set({
+      autoHideDialCode: true,
+      nationalMode: false,
+      utilsScript: "/bower_components/intl-tel-input/build/js/utils.js"
+    });
   }
 
 })();

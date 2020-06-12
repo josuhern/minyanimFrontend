@@ -91,7 +91,7 @@
           var phoneNumbers = [];
           angular.forEach(vm.activeUsers, function (value) {
             if(value.phone.length>=10)
-              phoneNumbers.push(value.phone.trim().substr(value.phone.length - 10));
+              phoneNumbers.push(value.phone);
           });
           var defaultMessage = "This is the default message";
           var smsResponse = sendSMSv2(phoneNumbers, defaultMessage);

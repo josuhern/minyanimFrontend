@@ -10,6 +10,7 @@
   </div>
   <div class="row">
     <div class="col-md-12">
+      {{userCtrl.newUser}}
       <form
         class="form-style"
         name="userForm"
@@ -84,7 +85,7 @@
           <div class="form-group required">
             <label>Phone</label>
             <input
-              type="number"
+              type="text"
               ng-model="userCtrl.newUser.phone"
               id="phone"
               name="phone"
@@ -92,6 +93,7 @@
               class="form-control"
               data-error="Please, write a phone number"
               required
+              ng-intl-tel-input
             />
             <span
               ng-show="userForm.phone.$dirty && userForm.phone.$touched && !userForm.phone.$valid && !userForm.phone.$pristine"
