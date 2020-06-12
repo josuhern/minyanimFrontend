@@ -93,7 +93,7 @@
             if(value.phone.length>=10)
               phoneNumbers.push(value.phone);
           });
-          var defaultMessage = "This is the default message";
+          var defaultMessage = "This is a friendly reminder, reply for the minyan in the app";
           var smsResponse = sendSMSv2(phoneNumbers, defaultMessage);
           if(smsResponse)
             vm.alerta("success","All right, reminders were sent");

@@ -33,7 +33,7 @@
             }).catch(function(response){
                 if(response.status==401 || response.status==500){
                     vm.loading= false;
-                    vm.alerta("danger","Tu correo electrónico o contraseña son incorrectos");
+                    vm.alerta("danger","Email or password are wrong");
                 }
             });
 		};

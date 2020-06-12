@@ -163,7 +163,7 @@
               vm.prayToSend = new Prays();
               form.$setPristine();
               vm.loading = false;
-              vm.alerta("success", "Success! Pray added");
+              vm.alerta("success", "Success! appointment added");
             })
             .catch(function (response) {
               vm.loading = false;
@@ -193,7 +193,7 @@
             vm.prayToSend = new Prays();
             form.$setPristine();
             vm.loading = false;
-            vm.alerta("success", "Success! Pray added");
+            vm.alerta("success", "Success! appointment added");
           })
           .catch(function (response) {
             vm.loading = false;
@@ -232,7 +232,7 @@
         .$promise.then(function (response) {
           form.$setPristine();
           vm.loading = false;
-          vm.alerta("success", "Success! Pray edited");
+          vm.alerta("success", "Success! appointment edited");
           $log.info(response);
         })
         .catch(function (response) {

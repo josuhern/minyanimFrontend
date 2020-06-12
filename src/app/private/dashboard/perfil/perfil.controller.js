@@ -47,7 +47,7 @@
     vm.deleteFile = function (thisFileID) {
       vm.loadingImage = true;
       DepotFiles.destroy({ id: thisFileID }).$promise.then(function () {
-        vm.alerta("success", "La imagen fue eliminado");
+        vm.alerta("success", "Image deleted");
         vm.editProfileFile = undefined;
         vm.loadingImage = false;
       });
@@ -68,7 +68,7 @@
         vm.myFile = null;
         vm.alerta(
           "success",
-          "Felicidades, La imagen fue actualizada exitosamente!"
+          "Image updated!"
         );
       });
     };
@@ -111,13 +111,12 @@
           vm.loading = false;
           vm.alerta(
             "success",
-            "Felicidades, Usuario actualizado exitosamente!"
+            "Success, User updated!"
           );
-          $log.info(response);
         })
         .catch(function (response) {
           if (response.status == 400 || response.status == 500) {
-            vm.alerta("danger", "Error! el correo ya existe.");
+            vm.alerta("danger", "That email is already in use.");
           } else {
             vm.alerta("danger", "Sorry, Something went wrog");
           }
@@ -135,7 +134,7 @@
             form.$setPristine();
             vm.alerta(
               "success",
-              "Felicidades, Contraseña actualizada correctamente!"
+              "Success, password updated!"
             );
             vm.password = undefined;
             vm.password_confirmation = undefined;
@@ -146,7 +145,7 @@
             $log.info(response);
           });
       } else {
-        vm.alerta("warning", "Opps, las contraseñas no coinciden!");
+        vm.alerta("warning", "Opps, password didn't match!");
       }
     };
 

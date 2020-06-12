@@ -35,7 +35,7 @@
                         <div class="col-md-6">
                             <div class="form-group required">
                                 <label>Phone</label>
-                                <input type="text" ng-model="userCtrl.editUser.phone" id="phone" name="phone" placeholder="Phone" class="form-control" data-error="Please, write a phone number" required>
+                                <input type="text" ng-model="userCtrl.editUser.phone" id="phone" name="phone" placeholder="Phone" class="form-control" data-error="Please, write a phone number" required ng-intl-tel-input>
                                 <span ng-show="userForm.phone.$dirty && userForm.phone.$touched && !userForm.phone.$valid && !userForm.phone.$pristine">Please, write a phone number.</span>
                             </div>
                         </div>
