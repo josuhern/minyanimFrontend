@@ -21,7 +21,7 @@
     ngIntlTelInputProvider.set({
       autoHideDialCode: true,
       nationalMode: false,
-      utilsScript: "/bower_components/intl-tel-input/build/js/utils.js"
+      utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/12.1.12/js/utils.js"
     });
   }
 

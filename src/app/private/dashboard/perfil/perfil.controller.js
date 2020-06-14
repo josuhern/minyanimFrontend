@@ -106,7 +106,7 @@
 
     vm.updateUser = function (form) {
       Users.update({ id: vm.editUser.id }, vm.editUser)
-        .$promise.then(function (response) {
+        .$promise.then(function () {
           form.$setPristine();
           vm.loading = false;
           vm.alerta(
