@@ -9,21 +9,31 @@
             <form class="form-style" name="siteForm" ng-submit="siteForm.$valid && siteCtrl.updateSite(siteForm)" novalidate>
                 <div ng-repeat="alert in alerts" type="alert.type" class="alert alert-{{alert.type}}"><strong>{{ alert.msg }}</strong></div>
                         <div class="col-md-12">
-                            <div class="form-group">
+                            <div class="form-group required">
+                                <label>Name</label>
                                 <input type="text" ng-model="siteCtrl.editSite.name" id="name" name="name" placeholder="Name" class="form-control" data-error="Please, write a name" required>
                                 <span ng-show="siteForm.name.$dirty && siteForm.name.$touched && !siteForm.name.$valid && !siteForm.name.$pristine">Please, write a name.</span>
                             </div>
                         </div>
                         <div class="col-md-12">
-                            <div class="form-group">
+                            <div class="form-group required">
+                                <label>Address</label>
                                 <input type="text" ng-model="siteCtrl.editSite.address" placeholder="Address" class="form-control" id="address" name="address" data-error="Please, write an address" required>
                                 <span ng-show="siteForm.address.$dirty && siteForm.address.$touched && !siteForm.address.$valid && !siteForm.address.$pristine">Please, write an address.</span>
                             </div>
                         </div>
                         <div class="col-md-12">
-                            <div class="form-group">
+                            <div class="form-group required">
+                                <label>Phone</label>
                                 <input type="text" ng-model="siteCtrl.editSite.phone" placeholder="Phone" class="form-control" id="phone" name="phone" data-error="Please, write a phone number" required ng-intl-tel-input>
                                 <span ng-show="siteForm.phone.$dirty && siteForm.phone.$touched && !siteForm.phone.$valid && !siteForm.phone.$pristine">Please, write a phone number.</span>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group required">
+                                <label>SMS Reminder</label>
+                                <input type="text" ng-model="siteCtrl.editSite.message" placeholder="SMS Reminder" class="form-control" id="message" name="message" data-error="Please, write a default SMS reminder to send" required>
+                                <span ng-show="siteForm.message.$dirty && siteForm.message.$touched && !siteForm.message.$valid && !siteForm.message.$pristine">Please, write a default SMS reminder to send.</span>
                             </div>
                         </div>
                         <center><button ng-show="siteForm.$valid || siteCtrl.loading"  class="btn btn-oscuro" ng-disabled="siteCtrl.loading"><i ng-show="siteCtrl.loading" class="fa fa-circle-o-notch fa-spin"></i> Save</button></center>

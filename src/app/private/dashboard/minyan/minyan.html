@@ -1,11 +1,12 @@
 <div
   id="main"
   ng-controller="MinyanController as minyanCtrl"
-  ng-init="minyanCtrl.getTodayPrays()"
+  ng-init="minyanCtrl.getTodayPrays(); minyanCtrl.getUser()"
 >
 <div class="row">
   <div class="col-md-12">
     <center>
+      <h2>{{minyanCtrl.user.name}} {{minyanCtrl.user.lastname}}</h2>
       <h3>
         {{minyanCtrl.viewDate | date:"EEEE, MMMM d, y"}} <i ng-click="minyanCtrl.updateAttendance()" class="fas fa-redo-alt"></i><br /><small
           >{{minyanCtrl.viewDate | date:"HH:mma"}}</small
@@ -40,7 +41,7 @@
                 Sorry, Not available
               </button>
             </div>
-            <button class="btn btn-info" ng-disabled="pray.disabled" ng-click="minyanCtrl.sendReminder()">Send reminder</button>
+            <button class="btn btn-info reminder" ng-disabled="pray.disabled" ng-click="minyanCtrl.sendReminder()">Send reminder</button>
           </center>
           </div>
           <div class="col-md-3">

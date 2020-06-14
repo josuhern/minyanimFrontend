@@ -47,11 +47,27 @@ function sendSMS() {
     if(SMS) SMS.sendSMS(sendto, textmsg, function(){}, function(str){alert(str);});
 }
 function sendSMSv2(sendToArray, textmsg){
-    if(SMS){
-        SMS.sendSMS(sendToArray, textmsg, function(){}, function(str){alert(str);});
-        return true;
-    }
-    return false;
+    var permissions = cordova.plugins.permissions;
+    permissions.hasPermission(permissions.SEND_SMS, function( status ){
+        if (status.hasPermission){
+            if(SMS){
+                SMS.sendSMS(sendToArray, textmsg, function(){return true}, function(str){alert(str);});
+            }
+        }else{
+            permissions.requestPermission(permissions.SEND_SMS,
+                function(status){
+                    if(status.hasPermission ){
+                        if(SMS){
+                            SMS.sendSMS(sendToArray, textmsg, function(){return true}, function(str){alert(str);});
+                        }
+                    }else{
+                        return false;
+                    }
+                }
+            );
+        }
+    });
+    return true;
 }
 function listSMS() {
     updateData('');

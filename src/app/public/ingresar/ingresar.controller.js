@@ -14,7 +14,7 @@
 			password: ""
 		};
         if (angular.isDefined($localStorage.currentUser)){
-            $state.go('dashboard.main');
+            $state.go('dashboard.minyan');
         }
         
 		vm.crearSesion = function(loginForm) {
@@ -28,7 +28,7 @@
                 vm.loading= false;
                 vm.auth.isLoggedIn = true;
                 vm.saveToken(data.auth_token);
-                $state.go('dashboard.main');
+                $state.go('dashboard.minyan');
                 event.preventDefault();
             }).catch(function(response){
                 if(response.status==401 || response.status==500){

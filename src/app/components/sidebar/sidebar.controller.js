@@ -89,7 +89,8 @@
             {
               name: "Get it touch",
               icon: "fas fa-comment-dots",
-              url: "dashboard.sendSms"
+              url: "dashboard.sendSms",
+              class: "reminder"
             }
           ];
           break;
@@ -130,7 +131,8 @@
             {
               name: "Get it touch",
               icon: "fas fa-comment-dots",
-              url: "dashboard.sendSms"
+              url: "dashboard.sendSms",
+              class: "reminder"
             }
           ];
           break;
@@ -155,7 +157,8 @@
             {
               name: "Get it touch",
               icon: "fas fa-comment-dots",
-              url: "dashboard.sendSms"
+              url: "dashboard.sendSms",
+              class: "reminder"
             }
           ];
           break;

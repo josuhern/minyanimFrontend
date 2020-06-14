@@ -6,10 +6,21 @@
       .controller('MinyanController', MinyanController);
   
     /** @ngInject */
-    function MinyanController(Minyan, TodayPrays, Attendance, ActiveUsers, $filter, alertService, $rootScope, jwtHelper, $localStorage, SERVER_URL, $log, $interval){
+    function MinyanController(Minyan, TodayPrays, Attendance, ActiveUsers, Users, $filter, alertService, $rootScope, jwtHelper, $localStorage, SERVER_URL, $log, $interval){
       var vm = this;
       vm.tokenPayload = jwtHelper.decodeToken($localStorage.currentUser);
       vm.viewDate = new Date();
+
+      vm.getUser = function(){
+        Users.get({id: vm.tokenPayload.user_id}).$promise.then(function(response){
+            vm.user = new Users();
+            vm.user = response;
+        }).catch(function(response){
+            vm.alerta("danger","Sorry, Something went wrog");
+            $log.info(response);
+        });
+    }
+
       vm.getTodayPrays = function () {
         vm.loading = true;
         TodayPrays.query({ synagogue_id: vm.tokenPayload.synagogue_id, timezome: Intl.DateTimeFormat().resolvedOptions().timeZone })
@@ -54,7 +65,7 @@
             value.minyan = $filter('filter')(value.Attendance, {status: 1}).length;
           })
         });
-      },1000);
+      },5000);
 
       vm.saveMinyan = function(pray_id, status){
         vm.loading = true;
@@ -93,8 +104,7 @@
             if(value.phone.length>=10)
               phoneNumbers.push(value.phone);
           });
-          var defaultMessage = "This is a friendly reminder, reply for the minyan in the app";
-          var smsResponse = sendSMSv2(phoneNumbers, defaultMessage);
+          var smsResponse = sendSMSv2(phoneNumbers, vm.user.synagogue_message);
           if(smsResponse)
             vm.alerta("success","All right, reminders were sent");
           else
