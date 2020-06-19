@@ -34,6 +34,25 @@
         else
             vm.alerta("danger","Sorry, Something went wrog");
     }
+
+    vm.sendReminderIOS = function(){
+        var phoneNumbers = "";
+        angular.forEach(vm.activeUsers, function (value, key) {
+            if(key==0){
+                if(value.phone.length>=10)
+                    phoneNumbers = value.phone;
+            }else{
+                if(value.phone.length>=10)
+                    phoneNumbers = phoneNumbers + "," + value.phone;
+            }
+        });
+            var smsResponse = sendIOSSMS(phoneNumbers, vm.message);
+            if(smsResponse)
+              vm.alerta("success","All right, reminders were sent");
+            else
+              vm.alerta("danger","Sorry, Something went wrog");
+        
+    };
           
           vm.alerta = function(tipo, message) {
               alertService.add(tipo, message, 4000);
