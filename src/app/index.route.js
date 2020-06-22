@@ -10,6 +10,10 @@ function routerConfig($stateProvider, $urlRouterProvider) {
     $stateProvider
       .state('home', {
         url: '/',
+        templateUrl: 'app/public/main/main.html'
+      })
+      .state('login', {
+        url: '/login',
         templateUrl: 'app/public/ingresar/ingresar.html'
       })
       .state('forgotPassword', {
