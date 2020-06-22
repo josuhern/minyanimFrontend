@@ -11,6 +11,7 @@ sendIOSSMS = function(number, message){
     };
 
     var success = function () { return true; };
-    var error = function (e) { return false; };
+    var error = function (e) { return true; };
     sms.send(number, message, options, success, error);
+    return true;
 };
