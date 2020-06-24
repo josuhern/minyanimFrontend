@@ -29,8 +29,10 @@
                 phoneNumbers.push(value.phone);
         });
         var smsResponse = sendSMSv2(phoneNumbers, vm.message);
-        if(smsResponse)
+        if(smsResponse){
             vm.alerta("success","All right, message sent");
+            vm.message = "";
+        }
         else
             vm.alerta("danger","Sorry, Something went wrog");
     }
@@ -47,8 +49,10 @@
             }
         });
             var smsResponse = sendIOSSMS(phoneNumbers, vm.message);
-            if(smsResponse)
-              vm.alerta("success","All right, reminders were sent");
+            if(smsResponse){
+              vm.alerta("success","All right, reminders sent");
+              vm.message = "";
+            }
             else
               vm.alerta("danger","Sorry, Something went wrog");
         
