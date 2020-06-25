@@ -28,7 +28,7 @@
             if(value.phone.length>=10 && value.selected==1)
                 phoneNumbers.push(value.phone);
         });
-        var smsResponse = sendSMSv2(phoneNumbers, vm.message);
+        var smsResponse = sendSMS(phoneNumbers, vm.message);
         if(smsResponse){
             vm.alerta("success","All right, message sent");
             vm.message = "";
