@@ -87,7 +87,7 @@
               url: "dashboard.controlsPray"
             },
             {
-              name: "Get it touch",
+              name: "Get in touch",
               icon: "fas fa-comment-dots",
               url: "dashboard.sendSms",
               class: "reminder"
