@@ -49,12 +49,29 @@
                                 <span ng-show="courseForm.synagogue_id.$dirty && courseForm.synagogue_id.$touched && !courseForm.synagogue_id.$valid && !courseForm.synagogue_id.$pristine">Please, select a synagogue</span>
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-6" ng-if="sidebar.allow == 'Root'">
                             <div class="form-group required">
                                 <label>User Type</label>
                                 <select ng-model="userCtrl.editUser.user_type_id" id="user_type_id" name="user_type_id" class="form-control"  data-error="Please, select an user type" required>
                                     <option selected disabled value="">Select an User type</option>
                                     <option ng-repeat="x in userCtrl.user_types" value="{{x.id}}">{{x.name}}</option>
+                                </select>
+                                <span ng-show="userForm.user_type_id.$dirty && userForm.user_type_id.$touched && !userForm.user_type_id.$valid && !userForm.user_type_id.$pristine">Please, select an user type</span>
+                            </div>
+                        </div>
+                        <div class="col-md-6" ng-if="userCtrl.editUser.user_type_name=='Root' && sidebar.allow == 'Admin'">
+                            <div class="form-group required">
+                                <label>User Type</label>
+                                <input ng-model="userCtrl.editUser.user_type_name" id="user_type_id" name="user_type_id" class="form-control"  data-error="Please, select an user type" required disabled>
+                                <span ng-show="userForm.user_type_id.$dirty && userForm.user_type_id.$touched && !userForm.user_type_id.$valid && !userForm.user_type_id.$pristine">Please, select an user type</span>
+                            </div>
+                        </div>
+                        <div class="col-md-6" ng-if="userCtrl.editUser.user_type_name!='Root' && sidebar.allow == 'Admin'">
+                            <div class="form-group required">
+                                <label>User Type</label>
+                                <select ng-model="userCtrl.editUser.user_type_id" id="user_type_id" name="user_type_id" class="form-control"  data-error="Please, select an user type" required>
+                                    <option selected disabled value="">Select an User type</option>
+                                    <option ng-repeat="x in userCtrl.user_types" ng-if="x.name!='Root'" value="{{x.id}}">{{x.name}}</option>
                                 </select>
                                 <span ng-show="userForm.user_type_id.$dirty && userForm.user_type_id.$touched && !userForm.user_type_id.$valid && !userForm.user_type_id.$pristine">Please, select an user type</span>
                             </div>
