@@ -61,7 +61,7 @@
         .$promise.then(function (response) {
           vm.prays = response;
           vm.tableParams = new NgTableParams(
-            { page: 1, count: 6 },
+            { page: 1, count: 6, sorting: { date: 'desc' }},
             { counts: [], dataset: vm.prays }
           );
           vm.loading = false;

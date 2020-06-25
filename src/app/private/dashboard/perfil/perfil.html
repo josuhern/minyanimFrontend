@@ -34,14 +34,14 @@
                 <div ng-repeat="alert in alerts" type="alert.type" class="alert alert-{{alert.type}}"><strong>{{ alert.msg }}</strong></div>
                         <div class="col-md-6">
                             <div class="form-group required">
-                                <label>Name</label>
+                                <label>First name</label>
                                 <input type="text" ng-model="perfilCtrl.editUser.name" id="name" name="name" placeholder="First name" class="form-control" data-error="Campo Requerido" required>
                                 <span ng-show="userForm.name.$dirty && userForm.name.$touched && !userForm.name.$valid && !userForm.name.$pristine">Please, write your first name.</span>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group required">
-                                <label>Lastname</label>
+                                <label>Last name</label>
                                 <input type="text" ng-model="perfilCtrl.editUser.lastname" id="lastname" name="lastname" placeholder="Last name" class="form-control" data-error="Campo Requerido" required>
                                 <span ng-show="userForm.lastname.$dirty && userForm.lastname.$touched && !userForm.lastname.$valid && !userForm.lastname.$pristine">Please, write your last name</span>
                             </div>
