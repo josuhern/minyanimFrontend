@@ -19,6 +19,10 @@
       <div ng-repeat="alert in alerts" type="alert.type" class="alert alert-{{alert.type}}">
         <strong>{{ alert.msg }}</strong>
       </div>
+      <div type="info" class="alert alert-info" ng-if="minyanCtrl.prays.length==0">
+        <strong>Sorry. No appointments registered for today.<br>
+          Ask to the app administrator of your synagogue to update them.</strong>
+      </div>
       <uib-accordion close-others="oneAtATime">
         <uib-accordion-group heading="{{pray.name}}" panel-class="{{pray.class}}" is-open="pray.open" ng-repeat="pray in minyanCtrl.prays">
           <div class="col-md-12" ng-if="pray.minyan>=10">
@@ -41,7 +45,7 @@
                 Sorry, Not available
               </button>
             </div>
-            <button class="btn btn-info reminder" ng-disabled="pray.disabled" ng-click="minyanCtrl.sendReminderIOS()">Send reminder</button>
+            <button class="btn btn-info reminder" ng-disabled="pray.disabled" ng-click="minyanCtrl.sendReminder()">Send reminder</button>
           </center>
           </div>
           <div class="col-md-3">
