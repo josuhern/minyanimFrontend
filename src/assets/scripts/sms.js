@@ -4,9 +4,6 @@ var interceptEnabled = false;
 
 
 var sendSms = function(sendToArray, textmsg) {
-    //var number = document.getElementById('numberTxt').value.toString(); /* iOS: ensure number is actually a string */
-    //var message = document.getElementById('messageTxt').value;
-
     //CONFIGURATION
     var options = {
         replaceLineBreaks: false, // true to replace \n by a new line, false by default
