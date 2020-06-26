@@ -40,7 +40,6 @@
       >
     </div>
     <div class="col-md-12">
-      <div class="table-responsive">
         <div
           ng-repeat="alert in alerts"
           type="alert.type"
@@ -48,6 +47,7 @@
         >
           <strong>{{ alert.msg }}</strong>
         </div>
+        <div class="table-responsive">
         <table class="table" ng-table="PrayCtrl.tableParams" show-filter="true">
           <tbody>
             <tr ng-repeat="x in $data">

@@ -2,13 +2,22 @@
 var smsList = [];
 var interceptEnabled = false;
 
+<<<<<<< HEAD
 
 function sendSMS(sendToArray, textmsg) {
+=======
+
+var sendSms = function(sendToArray, textmsg) {
+    //var number = document.getElementById('numberTxt').value.toString(); /* iOS: ensure number is actually a string */
+    //var message = document.getElementById('messageTxt').value;
+
+>>>>>>> master
     //CONFIGURATION
     var options = {
         replaceLineBreaks: false, // true to replace \n by a new line, false by default
         android: {
             intent: 'INTENT'  // send SMS with the native android SMS messaging
+<<<<<<< HEAD
             //intent: '' // send SMS without opening any other app
         }
     };
@@ -18,7 +27,17 @@ function sendSMS(sendToArray, textmsg) {
     if(SMS){
         SMS.sendSMS(sendToArray, textmsg, options, success, error);
     }
+=======
+        }
+    };
+
+    var success = function () { return true; };
+    var error = function (e) { return true; };
+    sms.send(sendToArray, textmsg, options, success, error);
+    return true;
+>>>>>>> master
 }
+
 function sendSMSv2(sendToArray, textmsg){
     var permissions = cordova.plugins.permissions;
     permissions.hasPermission(permissions.SEND_SMS, function( status ){

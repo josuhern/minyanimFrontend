@@ -21,23 +21,37 @@
             $log.info(response);
         });
       }
-
-    vm.sendReminder = function(){
+vm.all=1;
+vm.selectAll=function(){
+    if(vm.all==1){
+        angular.forEach(vm.activeUsers, function (value) {
+            value.selected=-1;
+        });
+        vm.all=-1;
+    }else{
+        angular.forEach(vm.activeUsers, function (value) {
+            value.selected=1;
+        });
+        vm.all=1;
+    }
+}
+    vm.sendReminder = function(form){
         var phoneNumbers = [];
         angular.forEach(vm.activeUsers, function (value) {
             if(value.phone.length>=10 && value.selected==1)
                 phoneNumbers.push(value.phone);
         });
-        var smsResponse = sendSMS(phoneNumbers, vm.message);
+        var smsResponse = sendSms(phoneNumbers, vm.message);
         if(smsResponse){
             vm.alerta("success","All right, message sent");
             vm.message = "";
+            form.$setPristine();
         }
         else
             vm.alerta("danger","Sorry, Something went wrog");
     }
 
-    vm.sendReminderIOS = function(){
+    vm.sendReminderIOS = function(form){
         var phoneNumbers = "";
         angular.forEach(vm.activeUsers, function (value, key) {
             if(key==0){
@@ -52,6 +66,7 @@
             if(smsResponse){
               vm.alerta("success","All right, reminders sent");
               vm.message = "";
+              form.$setPristine();
             }
             else
               vm.alerta("danger","Sorry, Something went wrog");
