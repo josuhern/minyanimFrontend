@@ -104,7 +104,7 @@
             if(value.phone.length>=10)
               phoneNumbers.push(value.phone);
           });
-          var smsResponse = sendSMSv2(phoneNumbers, vm.user.synagogue_message);
+          var smsResponse = sendSms(phoneNumbers, vm.user.synagogue_message);
           if(smsResponse)
             vm.alerta("success","All right, reminders were sent");
           else

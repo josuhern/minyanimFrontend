@@ -12,8 +12,8 @@
                 <a ng-if="sidebar.permisos.write" ui-sref="dashboard.sucursalAlta" class="btn btn-oscuro btn-block">New Synagogue</a>
             </div>
             <div class="col-md-12">
-                <div class="table-responsive">
                 <div ng-repeat="alert in alerts" type="alert.type" class="alert alert-{{alert.type}}"><strong>{{ alert.msg }}</strong></div>
+                <div class="table-responsive">
                   <table class="table" ng-table="siteCtrl.tableParams" show-filter="true">
                       <tbody>
                           <tr ng-repeat="x in $data">

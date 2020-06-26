@@ -16,20 +16,24 @@
         <div class="col-md-6">
             <h3>Contacts</h3>
             <ul class="list-group">
+                <li class="list-group-item" ng-click="smsCtrl.selectAll()"><span ng-if="smsCtrl.all==1" class="badge"><i class="fas fa-check"></i></span>Select all</li>
                 <li class="list-group-item" ng-repeat="user in smsCtrl.activeUsers" ng-click="user.selected = user.selected*-1">
                     <span ng-if="user.selected==1" class="badge"><i class="fas fa-check"></i></span>
                     {{user.name}} {{user.lastname}} 
                 </li>
             </ul>
         </div>
-        <div class="col-md-6">
-            <h3>Message</h3>
-            <div class="form-group">
-                <label class="sr-only" for="message">Message</label>
-                <textarea ng-model="smsCtrl.message" class="form-control" rows="5" placeholder="Write your message here"></textarea>
+        <form class="form-style" name="smsForm" ng-submit="smsForm.$valid && smsCtrl.sendReminder(smsForm)" novalidate>
+            <div class="col-md-6">
+                <h3>Message</h3>
+                <div class="form-group">
+                    <label class="sr-only" for="message">Message</label>
+                    <textarea ng-model="smsCtrl.message" class="form-control" rows="5" placeholder="Write your message here" required></textarea>
+                    <span ng-show="smsForm.message.$dirty && smsForm.message.$touched && !smsForm.message.$valid && !smsForm.message.$pristine">Please, write a message.</span>
+                </div>
+                <button ng-show="smsForm.$valid" type="submit" class="btn btn-oscuro">Send message</button>
             </div>
-            <button type="submit" class="btn btn-primary" ng-click="smsCtrl.sendReminder()">Send messages</button>
-        </div>
+        </form>
     </div>
 </div>
 </div>
