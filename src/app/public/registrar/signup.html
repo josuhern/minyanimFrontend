@@ -1,4 +1,4 @@
-<div class="container" ng-controller="SitesController as siteCtrl">
+<div class="container" ng-controller="RegisterController as registerCtrl" ng-init="registerCtrl.initRegisterSynagogue()">
     <div class="row">
         <div class="col-md-12">
             <div class="page-header">
@@ -6,38 +6,90 @@
             </div>
         </div>
         <div class="col-md-12">
-            <form class="form-style" name="siteForm" ng-submit="siteForm.$valid && siteCtrl.saveSite(siteForm)" novalidate>
-                <div ng-repeat="alert in alerts" type="alert.type" class="alert alert-{{alert.type}}"><strong>{{ alert.msg }}</strong></div>
-                        <div class="col-md-12">
+            <div ng-repeat="alert in alerts" type="alert.type" class="alert alert-{{alert.type}}"><strong>{{ alert.msg }}</strong></div>
+            <form class="form-style" name="siteForm" ng-submit="siteForm.$valid && registerCtrl.saveAdminSynagogue(siteForm)" novalidate>
+                <div class="col-md-6">
+                <div class="panel panel-oscuro">
+                    <div class="panel-heading">Synagogue information</div>
+                    <div class="panel-body">
+                        <div class="alert alert-info alert-dismissible" role="alert" ng-show="registerCtrl.synagogueData==1">
+                            <button type="button" class="close" data-dismiss="alert" ng-click="registerCtrl.synagogueData=0" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            Please fulfill all the data related with your Synagogue
+                          </div>
+                          <div class="col-md-12">
                             <div class="form-group required">
-                                <label>Name</label>
-                                <input type="text" ng-model="siteCtrl.newSites.name" placeholder="Name" class="form-control" id="name" name="name" data-error="Please, write a name" required>
+                                <label>Synagogue name</label>
+                                <input type="text" ng-model="registerCtrl.newSites.name" placeholder="Synagogue name" class="form-control" id="name" name="name" data-error="Please, write a name" required>
                                 <span ng-show="siteForm.name.$dirty && siteForm.name.$touched && !siteForm.name.$valid && !siteForm.name.$pristine">Please, write a name.</span>
                             </div>
                         </div>
                         <div class="col-md-12">
                             <div class="form-group required">
-                                <label>Address</label>
-                                <input type="text" ng-model="siteCtrl.newSites.address" placeholder="Address" class="form-control" id="address" name="address" data-error="Please, write an address" required>
+                                <label>Synagogue address</label>
+                                <input type="text" ng-model="registerCtrl.newSites.address" placeholder="Synagogue address" class="form-control" id="address" name="address" data-error="Please, write an address" required>
                                 <span ng-show="siteForm.address.$dirty && siteForm.address.$touched && !siteForm.address.$valid && !siteForm.address.$pristine">Please, write an address.</span>
                             </div>
                         </div>
                         <div class="col-md-12">
                             <div class="form-group required">
-                                <label>Phone</label>
-                                <input type="text" ng-model="siteCtrl.newSites.phone" placeholder="Phone" class="form-control" id="phone" name="phone" data-error="Please, write a phone number" required ng-intl-tel-input>
+                                <label>Synagogue phone</label>
+                                <input type="text" ng-model="registerCtrl.newSites.phone" placeholder="Synagogue phone" class="form-control" id="phone" name="phone" data-error="Please, write a phone number" required ng-intl-tel-input>
                                 <span ng-show="siteForm.phone.$dirty && siteForm.phone.$touched && !siteForm.phone.$valid && !siteForm.phone.$pristine">Please, write a phone number.</span>
                             </div>
                         </div>                        
                         <div class="col-md-12">
                             <div class="form-group required">
                                 <label>SMS Reminder</label>
-                                <input type="text" ng-model="siteCtrl.newSites.message" placeholder="SMS Reminder" class="form-control" id="message" name="message" data-error="Please, write a default SMS reminder to send" required>
+                                <input type="text" ng-model="registerCtrl.newSites.message" placeholder="This is a friendly reminder to attend..." class="form-control" id="message" name="message" data-error="Please, write a default SMS reminder to send" required>
                                 <span ng-show="siteForm.message.$dirty && siteForm.message.$touched && !siteForm.message.$valid && !siteForm.message.$pristine">Please, write a default SMS reminder to send.</span>
                             </div>
                         </div>
-                        <center><button ng-show="siteForm.$valid || siteCtrl.loading"  class="btn btn-oscuro" ng-disabled="siteCtrl.loading"><i ng-show="siteCtrl.loading" class="fa fa-circle-o-notch fa-spin"></i> Save</button></center>
-                    </form>
+                    </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                  <div class="panel panel-oscuro">
+                    <div class="panel-heading">Admin user information</div>
+                    <div class="panel-body">
+                        <div class="alert alert-info alert-dismissible" role="alert" ng-show="registerCtrl.userData==1">
+                            <button type="button" class="close" data-dismiss="alert" ng-click="registerCtrl.userData=0" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            Please complete the data for the administrator account
+                          </div>
+                          <div class="col-md-12">
+                            <div class="form-group required">
+                              <label>First name</label>
+                              <input type="text" ng-model="registerCtrl.newUser.name" id="username" name="username" placeholder="First name" class="form-control" data-error="Please, write a name" required />
+                              <span ng-show="siteForm.username.$dirty && siteForm.username.$touched && !siteForm.username.$valid && !siteForm.username.$pristine">Please, write a name.</span>
+                            </div>
+                          </div>
+                          <div class="col-md-12">
+                            <div class="form-group required">
+                              <label>Last name</label>
+                              <input type="text" ng-model="registerCtrl.newUser.lastname" id="userLastname" name="userLastname" placeholder="Last name" class="form-control" data-error="Plase, write a lastname" required/>
+                              <span ng-show="siteForm.userLastname.$dirty && siteForm.userLastname.$touched && !siteForm.userLastname.$valid && !siteForm.userLastname.$pristine">Plase, write a lastname</span>
+                            </div>
+                          </div>
+                          <div class="col-md-12">
+                            <div class="form-group required">
+                              <label>Email</label>
+                              <input type="email" ng-model="registerCtrl.newUser.email" id="userEmail" name="userEmail" placeholder="Email" class="form-control" data-error="That is not a valid email" required/>
+                              <span ng-show="siteForm.userEmail.$dirty && siteForm.userEmail.$touched && !siteForm.userEmail.$valid && !siteForm.userEmail.$pristine">That is not a valid email.</span>
+                            </div>
+                          </div>
+                          <div class="col-md-12">
+                            <div class="form-group required">
+                              <label>Phone</label>
+                              <input type="text" ng-model="registerCtrl.newUser.phone" id="userPhone" name="userPhone" placeholder="Phone" class="form-control" data-error="Please, write a phone number" required ng-intl-tel-input/>
+                              <span ng-show="siteForm.userPhone.$dirty && siteForm.userPhone.$touched && !siteForm.userPhone.$valid && !siteForm.userPhone.$pristine">Please, write a phone number.</span>
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                  </div>
+                  <center>
+                    <button ng-show="siteForm.$valid || registerCtrl.loading" class="btn btn-oscuro" ng-disabled="registerCtrl.loading"><i ng-show="registerCtrl.loading" class="fa fa-circle-o-notch fa-spin"></i>Save</button>
+                </center>
+                </form>
         </div>
         <div class="col-md-12">
             <a ui-sref="registrar" class="btn btn-danger"><i class="fa fa-arrow-left"></i> Back</a>

@@ -21,7 +21,7 @@
                             </div>
 
                             <br>
-                            <button type="submit"  class="btn btn-lg btn-block btn-oscuro" ng-disabled="loginForm.$valid || mylogin.loading"><i ng-show="mylogin.loading" class="fa fa-circle-o-notch fa-spin"></i> Sign in</button></br>
+                            <button type="submit" class="btn btn-lg btn-block btn-oscuro" ng-disabled="!loginForm.$valid || mylogin.loading"><i ng-show="mylogin.loading" class="fa fa-circle-o-notch fa-spin"></i> Sign in</button></br>
                             <a class="btn btn-lg btn-block btn-claro" ui-sref="registrar"> Create account</a>
                             <a class="btn btn-lg btn-block btn-claro" ui-sref="forgotPassword">Forgot password</a><br/>
                         </form>
