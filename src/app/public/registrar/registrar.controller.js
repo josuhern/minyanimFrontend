@@ -51,7 +51,7 @@
                 event.preventDefault();
             }).catch(function(response){
                 vm.loading = false;
-                if(response.status==-1){
+                if(response.status==400 || response.status==500){
                     vm.alerta("danger","Looks like you already have an account.");
                     vm.newUser.email=undefined;
                 }else{
