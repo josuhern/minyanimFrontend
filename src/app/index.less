@@ -243,16 +243,6 @@ input[type="file"]:focus, input[type="radio"]:focus, input[type="checkbox"]:focu
     float: right;
     background-color: @oscuro;
 }
-.btn-claro {
-    color: @white;
-    background-color: @claro;
-    border-color: @claro;
-    .active, .focus, &:active, &:focus, &:hover{
-        color: @white;
-        background-color: @oscuro;
-        border-color: @oscuro;
-    }
-}
 .btn-oscuro {
     color: @white;
     background-color: @oscuro;
@@ -261,6 +251,16 @@ input[type="file"]:focus, input[type="radio"]:focus, input[type="checkbox"]:focu
         color: @white;
         background-color: @claro;
         border-color: @claro;
+    }
+}
+.btn-claro {
+    color: @oscuro;
+    background-color: @white;
+    border-color: @oscuro;
+    .active, .focus, &:active, &:focus, &:hover{
+        color: @white;
+        background-color: @oscuro;
+        border-color: @oscuro;
     }
 }
 

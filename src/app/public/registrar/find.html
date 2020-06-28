@@ -1,0 +1,54 @@
+<div class="container" ng-controller="RegisterController as registerCtrl" ng-init="registerCtrl.querySites()">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="page-header">
+                <center><h1><i class="fas fa-synagogue"></i><br>Synagogues using this app</h1></center>
+            </div>
+            <div class="col-md-12">
+                <div class="form-group">
+                <label class="sr-only" for="exampleInputAmount">Amount (in dollars)</label>
+                    <div class="input-group">
+                        <input type="text" ng-model="registerCtrl.searchText" class="form-control" placeholder="Search by name">
+                        <div class="input-group-addon"><i class="fa fa-search" aria-hidden="true"></i></div>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+        <div class="col-md-12">
+                <div class="col-sm-6 col-md-4">
+                    <div class="thumbnail" ng-repeat="x in registerCtrl.sites | filter:registerCtrl.searchText" ng-if="$index%3 == 0">
+                      <div class="caption">
+                        <h3>{{x.name}}</h3>
+                        <p><strong>Address: </strong>{{x.address}}</p>
+                        <p><strong>Phone: </strong>{{x.phone}}</p>
+                        <p><button class="btn btn-block btn-claro" ui-sref="registerUser({id: x.id})">Add me to this Synagogue</button></p>
+                      </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4">
+                    <div class="thumbnail" ng-repeat="x in registerCtrl.sites | filter:registerCtrl.searchText" ng-if="$index%3 == 1">
+                      <div class="caption">
+                        <h3>{{x.name}}</h3>
+                        <p><strong>Address: </strong>{{x.address}}</p>
+                        <p><strong>Phone: </strong>{{x.phone}}</p>
+                        <p><button class="btn btn-block btn-claro" ui-sref="registerUser({id: x.id})">Add me to this Synagogue</button></p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-6 col-md-4">
+                    <div class="thumbnail" ng-repeat="x in registerCtrl.sites | filter:registerCtrl.searchText" ng-if="$index%3 == 2">
+                      <div class="caption">
+                        <h3>{{x.name}}</h3>
+                        <p><strong>Address: </strong>{{x.address}}</p>
+                        <p><strong>Phone: </strong>{{x.phone}}</p>
+                        <p><button class="btn btn-block btn-claro" ui-sref="registerUser({id: x.id})">Add me to this Synagogue</button></p>
+                      </div>
+                    </div>
+                  </div>
+        </div> 
+        <div class="col-md-12">
+            <a ui-sref="registrar" class="btn btn-danger"><i class="fa fa-arrow-left"></i> Back</a>
+        </div>
+    </div>
+</div>

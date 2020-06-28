@@ -16,6 +16,22 @@ function routerConfig($stateProvider, $urlRouterProvider) {
         url: '/login',
         templateUrl: 'app/public/ingresar/ingresar.html'
       })
+      .state('registrar', {
+        url: '/registrar',
+        templateUrl: 'app/public/registrar/registrar.html'
+      })
+      .state('findSynagogue', {
+        url: '/findSynagogue',
+        templateUrl: 'app/public/registrar/find.html'
+      })
+      .state('registerUser', {
+        url: '/registerUser:id',
+        templateUrl: 'app/public/registrar/registerUser.html'
+      })
+      .state('addSynagogue', {
+        url: '/addSynagogue',
+        templateUrl: 'app/public/registrar/signup.html'
+      })
       .state('forgotPassword', {
         url: '/forgotPassword',
         templateUrl: 'app/public/forgotPassword/forgotPassword.html'
