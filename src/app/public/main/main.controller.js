@@ -6,6 +6,6 @@
 
 	function HomeCtrl(){
         var vm = this;
-        vm.isCollapsed = true;
+		vm.isCollapsed = true;
 	}
 })();
