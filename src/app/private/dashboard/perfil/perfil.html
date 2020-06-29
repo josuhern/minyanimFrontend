@@ -2,34 +2,11 @@
     <div class="row">
         <div class="col-md-12">
             <div class="page-header">
-                <center><h2><i class="fas fa-user"></i> Profile</h2></center>
+              <center>
+                <h2><i class="fas fa-user"></i> Profile</h2>
+              </center>
             </div>
-        </div>
-    </div>
-    <div class="row">
-        <!--<div class="col-md-4">
-            <div class="page-header">
-                <h4>Mi imagen de perfil</h4>
-            </div>
-            <div ng-if="!perfilCtrl.editProfileFile">
-                <div class="form-group">
-                    <center><img ng-src="assets/images/defaultprofile.jpg" alt="Profile Image" class="img-thumbnail">
-                <br></center>
-                    <input type="file" accept="image/*" id="archivo" name="archivo" ng-model="perfilCtrl.myFile" ngf-select="perfilCtrl.uploadFile($file)" class="form-control" data-error="Campo Requerido" required>
-                    <span ng-show="procedureForm.archivo.$dirty && procedureForm.archivo.$touched && !procedureForm.archivo.$valid && !procedureForm.archivo.$pristine">Por favor escribe una descripción.</span>
-                </div>
-                <center><button class="btn btn-oscuro" ng-click="perfilCtrl.updateFile(perfilCtrl.editUser.id)" ng-disabled="perfilCtrl.loadingImage"><i ng-show="perfilCtrl.loadingImage" class="fa fa-circle-o-notch fa-spin"></i> Actualizar Imagen</button></center>
-            </div>
-            <div ng-if="perfilCtrl.editProfileFile">
-                <center><img ng-src="{{perfilCtrl.downloadFileURL}}" alt="{{perfilCtrl.editProfileFile.file_name}}" class="img-thumbnail">
-                <br></center>
-                <center><button class="btn btn-danger" ng-click="perfilCtrl.deleteFile(perfilCtrl.editProfileFile.id)"><i ng-show="perfilCtrl.loadingImage" class="fa fa-circle-o-notch fa-spin"></i> Eliminar</button></center>
-            </div>
-        </div>-->
-        <div class="col-md-12">
-            <div class="page-header">
-                <h4>My data</h4>
-            </div>
+            <h4>My data</h4><br>
             <form class="form-style" name="userForm" ng-submit="userForm.$valid && perfilCtrl.updateUser(userForm)" novalidate>
                 <div ng-repeat="alert in alerts" type="alert.type" class="alert alert-{{alert.type}}"><strong>{{ alert.msg }}</strong></div>
                         <div class="col-md-6">
